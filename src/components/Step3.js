@@ -952,80 +952,90 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                             />
                         ))}
                         <Button
-                            variant="contained"
-                            type="submit"
-                            disabled={loading}
-                            sx={{
-                                bgcolor: '#00695c',
-                                ':hover': { bgcolor: '#004d40' },
-                                height: 48
-                            }}
-                        >
-                            {loading && (
-            <Box
+    variant="contained"
+    type="submit"
+    disabled={loading}
+    sx={{
+        bgcolor: '#00695c',
+        ':hover': { bgcolor: '#004d40' },
+        height: 48,
+        position: 'relative' // Adiciona posicionamento relativo
+    }}
+>
+    {loading ? (
+        <>
+            <CircularProgress size={24} sx={{ mr: 2 }} />
+            Processando...
+        </>
+    ) : (
+        'Finalizar Pagamento'
+    )}
+
+    {loading && (
+        <Box
+            sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                zIndex: 9999,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                color: '#fff',
+                textAlign: 'center',
+                padding: 4,
+            }}
+        >
+            <Box 
                 sx={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    zIndex: 9999,
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center',
                     alignItems: 'center',
-                    color: '#fff',
-                    textAlign: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: 4,
                     padding: 4,
+                    maxWidth: 400,
+                    width: '100%',
+                    backdropFilter: 'blur(10px)'
                 }}
             >
-                <Box 
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                        borderRadius: 4,
-                        padding: 4,
-                        maxWidth: 400,
-                        width: '100%',
-                        backdropFilter: 'blur(10px)'
+                <CircularProgress 
+                    size={80} 
+                    sx={{ 
+                        color: '#00695c', 
+                        mb: 3 
+                    }} 
+                />
+                <Typography 
+                    variant="h5" 
+                    sx={{ 
+                        mb: 2, 
+                        color: '#fff', 
+                        fontWeight: 'bold' 
                     }}
                 >
-                    <CircularProgress 
-                        size={80} 
-                        sx={{ 
-                            color: '#00695c', 
-                            mb: 3 
-                        }} 
-                    />
-                    <Typography 
-                        variant="h5" 
-                        sx={{ 
-                            mb: 2, 
-                            color: '#fff', 
-                            fontWeight: 'bold' 
-                        }}
-                    >
-                        Processando Pagamento
-                    </Typography>
-                    <Typography 
-                        variant="body1" 
-                        sx={{ 
-                            mb: 2, 
-                            color: 'rgba(255,255,255,0.7)',
-                            maxWidth: 300
-                        }}
-                    >
-                        {formaPagamento === 'pix' 
-                            ? `Aguardando confirmação do Pix... (Tentativa ${verificationCount + 1}/5)` 
-                            : 'Estamos processando seu pagamento com segurança.'}
-                    </Typography>
-                </Box>
+                    Processando Pagamento
+                </Typography>
+                <Typography 
+                    variant="body1" 
+                    sx={{ 
+                        mb: 2, 
+                        color: 'rgba(255,255,255,0.7)',
+                        maxWidth: 300
+                    }}
+                >
+                    {formaPagamento === 'pix' 
+                        ? `Aguardando confirmação do Pix... (Tentativa ${verificationCount + 1}/5)` 
+                        : 'Estamos processando seu pagamento com segurança.'}
+                </Typography>
             </Box>
-        )}
-                        </Button>
+        </Box>
+    )}
+</Button>
                     </Box>
                 )}
 
