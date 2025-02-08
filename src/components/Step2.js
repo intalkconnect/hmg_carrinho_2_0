@@ -295,24 +295,21 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       alignItems: 'center',
       mt: 1,
     }}
+
   >
     <FormControlLabel
       value="entrega"
       control={
         <Radio
           sx={{
+            color: '#00695c',
             '& .MuiSvgIcon-root': {
-              borderColor: '#00796b', // Linha do rádio quando não selecionado
-            },
-            '&.Mui-checked': {
-              color: '#00796b', // Cor do ícone quando selecionado
+              borderColor: '#00695c', // Linha do rádio quando não selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
-            '&:not(.Mui-checked) .MuiSvgIcon-root': {
-              borderColor: '#00796b', // Garantindo que a borda permaneça verde quando não selecionado
-            },
+            '&.Mui-checked': { color: '#00695c' }
           }}
         />
       }
@@ -330,18 +327,14 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
+            color: '#00695c',
             '& .MuiSvgIcon-root': {
-              borderColor: '#00796b', // Linha do rádio quando não selecionado
-            },
-            '&.Mui-checked': {
-              color: '#00796b', // Cor do ícone quando selecionado
+              borderColor: '#00695c', // Linha do rádio quando não selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
-            '&:not(.Mui-checked) .MuiSvgIcon-root': {
-              borderColor: '#00796b', // Garantindo que a borda permaneça verde quando não selecionado
-            },
+            '&.Mui-checked': { color: '#00695c' }
           }}
         />
       }
