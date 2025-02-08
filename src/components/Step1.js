@@ -176,7 +176,7 @@ const Step1 = ({ formData, handleInputChange, nextStep }) => {
                 />
 
                 <Button
-                    variant="contained"
+                    variant="outlined"
                     color="primary"
                     onClick={handleNext}
                     sx={{
