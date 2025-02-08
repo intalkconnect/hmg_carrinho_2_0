@@ -71,7 +71,7 @@ const Modal = ({ isVisible, onClose, items }) => {
                     <Stack
                         direction="row"
                         justifyContent="space-between"
-                        sx={{ mb: 1 }}
+                        sx={{ mb: 1, mt: 3 }}
                     >
                         <Typography
                             variant="subtitle1"
