@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import {
     Box,
     Typography,
-    Button,
     Fade,
     IconButton,
     Divider,
@@ -95,40 +94,21 @@ const Modal = ({ isVisible, onClose, items }) => {
                                     boxShadow: 1,
                                 }}
                             >
-                                <Box>
-                                    <Typography
-                                        variant="body1"
-                                        sx={{ fontWeight: 'bold', color: 'text.primary' }}
-                                    >
-                                        {capitalizeFirstLetter(item.orc_Produto_Nome)}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        sx={{ color: 'text.secondary' }}
-                                    >
-                                        {item.orc_Produto_quantidade} {item.orc_Produto_unidade}
-                                    </Typography>
-                                </Box>
+                                <Typography
+                                    variant="body1"
+                                    sx={{ fontWeight: 'bold', color: 'text.primary' }}
+                                >
+                                    {capitalizeFirstLetter(item.orc_Produto_Nome)}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    sx={{ color: 'text.secondary' }}
+                                >
+                                    {item.orc_Produto_quantidade} {item.orc_Produto_unidade}
+                                </Typography>
                             </Box>
                         ))}
                     </Stack>
-
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{
-                            mt: 3,
-                            display: 'block',
-                            mx: 'auto',
-                            textTransform: 'none',
-                            width: '100%',
-                            fontSize: '1rem',
-                            ':hover': { bgcolor: 'primary.dark' },
-                        }}
-                        onClick={onClose}
-                    >
-                        Fechar Comanda
-                    </Button>
                 </Box>
             </Box>
         </Fade>
