@@ -25,7 +25,7 @@ import { Snackbar, Alert } from '@mui/material';
 // Importe as imagens
 import Logo1 from '../assets/logo.webp';
 import LogoCentro from '../assets/logo1.png';
-import { calculateTotalValue, handleCheckoutSubmission, handleSnackbarOpen } from '../helpers';
+import { calculateTotalValue, handleCheckoutSubmission, handleSnackbarOpen } from '../utils/helpers';
 
 
 const Checkout = () => {
