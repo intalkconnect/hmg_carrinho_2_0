@@ -6,12 +6,10 @@ import {
     List,
     ListItem,
     ListItemText,
-    ListItemIcon,
-    Divider,
     Fade,
     IconButton,
 } from '@mui/material';
-import { Close, Circle } from '@mui/icons-material';
+import { Close } from '@mui/icons-material';
 
 const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -36,27 +34,21 @@ const Modal = ({ isVisible, onClose, items }) => {
             <Box
                 sx={{
                     position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    bgcolor: 'rgba(0, 0, 0, 0.6)',
-                    display: isVisible ? 'flex' : 'none',
+                    inset: 0,
+                    bgcolor: 'rgba(0, 0, 0, 0.5)',
+                    display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     zIndex: 1300,
                 }}
-                onClick={(e) => {
-                    e.preventDefault();
-                    onClose();
-                }}
+                onClick={onClose}
             >
                 <Box
                     sx={{
-                        bgcolor: 'white',
-                        borderRadius: 4,
-                        p: 4,
-                        maxWidth: 520,
+                        bgcolor: 'background.paper',
+                        borderRadius: 2,
+                        p: 3,
+                        maxWidth: 400,
                         width: '90%',
                         boxShadow: 6,
                         position: 'relative',
@@ -69,17 +61,17 @@ const Modal = ({ isVisible, onClose, items }) => {
                             position: 'absolute',
                             top: 8,
                             right: 8,
-                            color: '#00695c',
+                            color: 'text.secondary',
                         }}
                     >
                         <Close />
                     </IconButton>
 
                     <Typography
-                        variant="h5"
+                        variant="h6"
                         sx={{
                             mb: 2,
-                            color: '#00695c',
+                            color: 'text.primary',
                             textAlign: 'center',
                             fontWeight: 'bold',
                         }}
@@ -87,47 +79,34 @@ const Modal = ({ isVisible, onClose, items }) => {
                         Detalhes do Produto
                     </Typography>
 
-                    <Divider sx={{ mb: 3 }} />
-
-                    <List disablePadding>
+                    <List sx={{ maxHeight: 200, overflowY: 'auto', px: 1 }}>
                         {items.map((item, index) => (
-                            <React.Fragment key={index}>
-                                <ListItem sx={{ py: 1.5 }}>
-                                    <ListItemIcon>
-                                        <Circle sx={{ color: '#00695c', fontSize: 10 }} />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={
-                                            <Typography
-                                                variant="body1"
-                                                sx={{ color: '#333', fontWeight: 'bold' }}
-                                            >
-                                                {capitalizeFirstLetter(item.orc_Produto_Nome)}
-                                            </Typography>
-                                        }
-                                        secondary={
-                                            <Typography variant="body2" sx={{ color: '#666' }}>
-                                                {item.orc_Produto_quantidade}{' '}
-                                                {item.orc_Produto_unidade}
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItem>
-                                {index < items.length - 1 && <Divider />}
-                            </React.Fragment>
+                            <ListItem key={index} disableGutters sx={{ py: 1 }}>
+                                <ListItemText
+                                    primary={capitalizeFirstLetter(item.orc_Produto_Nome)}
+                                    secondary={`${item.orc_Produto_quantidade} ${item.orc_Produto_unidade}`}
+                                    primaryTypographyProps={{
+                                        variant: 'body1',
+                                        fontWeight: 'medium',
+                                    }}
+                                    secondaryTypographyProps={{
+                                        variant: 'body2',
+                                        color: 'text.secondary',
+                                    }}
+                                />
+                            </ListItem>
                         ))}
                     </List>
 
                     <Button
                         variant="contained"
-                        color="success"
+                        color="primary"
                         sx={{
                             mt: 3,
                             display: 'block',
                             mx: 'auto',
-                            bgcolor: '#00695c',
-                            fontSize: '0.9rem',
-                            ':hover': { bgcolor: '#004d40' },
+                            textTransform: 'none',
+                            ':hover': { bgcolor: 'primary.dark' },
                         }}
                         onClick={onClose}
                     >
