@@ -67,20 +67,35 @@ const Modal = ({ isVisible, onClose, items }) => {
                         <Close />
                     </IconButton>
 
-                    <Typography
-                        variant="h6"
-                        sx={{
-                            mb: 2,
-                            textAlign: 'center',
-                            fontWeight: 'bold',
-                            color: 'primary.main',
-                        }}
+                    {/* Cabeçalho */}
+                    <Stack
+                        direction="row"
+                        justifyContent="space-between"
+                        sx={{ mb: 1 }}
                     >
-                        Comanda do Pedido
-                    </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            sx={{
+                                fontWeight: 'bold',
+                                color: 'text.primary',
+                            }}
+                        >
+                            Produto
+                        </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            sx={{
+                                fontWeight: 'bold',
+                                color: 'text.primary',
+                            }}
+                        >
+                            Quantidade
+                        </Typography>
+                    </Stack>
 
                     <Divider sx={{ mb: 2 }} />
 
+                    {/* Lista de itens com cores alternadas */}
                     <Stack spacing={1}>
                         {items.map((item, index) => (
                             <Box
@@ -88,15 +103,15 @@ const Modal = ({ isVisible, onClose, items }) => {
                                 sx={{
                                     display: 'flex',
                                     justifyContent: 'space-between',
-                                    bgcolor: '#f3f3f3',
                                     p: 2,
                                     borderRadius: 2,
+                                    bgcolor: index % 2 === 0 ? '#e8f5e9' : '#ffffff',
                                     boxShadow: 1,
                                 }}
                             >
                                 <Typography
                                     variant="body1"
-                                    sx={{ fontWeight: 'bold', color: 'text.primary' }}
+                                    sx={{ fontWeight: 'medium', color: 'text.primary' }}
                                 >
                                     {capitalizeFirstLetter(item.orc_Produto_Nome)}
                                 </Typography>
