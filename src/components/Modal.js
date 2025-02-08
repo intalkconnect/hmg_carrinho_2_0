@@ -3,11 +3,9 @@ import {
     Box,
     Typography,
     Button,
-    List,
-    ListItem,
-    ListItemText,
     Fade,
     IconButton,
+    Stack,
 } from '@mui/material';
 import { Close } from '@mui/icons-material';
 
@@ -71,32 +69,40 @@ const Modal = ({ isVisible, onClose, items }) => {
                         variant="h6"
                         sx={{
                             mb: 2,
-                            color: 'text.primary',
                             textAlign: 'center',
                             fontWeight: 'bold',
+                            color: 'primary.main',
                         }}
                     >
-                        Detalhes do Produto
+                        Comanda do Pedido
                     </Typography>
 
-                    <List sx={{ maxHeight: 200, overflowY: 'auto', px: 1 }}>
+                    <Stack spacing={2} sx={{ maxHeight: 250, overflowY: 'auto' }}>
                         {items.map((item, index) => (
-                            <ListItem key={index} disableGutters sx={{ py: 1 }}>
-                                <ListItemText
-                                    primary={capitalizeFirstLetter(item.orc_Produto_Nome)}
-                                    secondary={`${item.orc_Produto_quantidade} ${item.orc_Produto_unidade}`}
-                                    primaryTypographyProps={{
-                                        variant: 'body1',
-                                        fontWeight: 'medium',
-                                    }}
-                                    secondaryTypographyProps={{
-                                        variant: 'body2',
-                                        color: 'text.secondary',
-                                    }}
-                                />
-                            </ListItem>
+                            <Box
+                                key={index}
+                                sx={{
+                                    bgcolor: '#f9f9f9',
+                                    borderRadius: 1,
+                                    p: 2,
+                                    boxShadow: 2,
+                                }}
+                            >
+                                <Typography
+                                    variant="body1"
+                                    sx={{ fontWeight: 'bold', color: 'text.primary' }}
+                                >
+                                    {capitalizeFirstLetter(item.orc_Produto_Nome)}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    sx={{ color: 'text.secondary' }}
+                                >
+                                    {item.orc_Produto_quantidade} {item.orc_Produto_unidade}
+                                </Typography>
+                            </Box>
                         ))}
-                    </List>
+                    </Stack>
 
                     <Button
                         variant="contained"
@@ -110,7 +116,7 @@ const Modal = ({ isVisible, onClose, items }) => {
                         }}
                         onClick={onClose}
                     >
-                        Fechar
+                        Fechar Comanda
                     </Button>
                 </Box>
             </Box>
