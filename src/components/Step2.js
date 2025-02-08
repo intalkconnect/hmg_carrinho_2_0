@@ -521,16 +521,22 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
         )}
 
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 4 }}>
-          <Button  variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    sx={{
-                        alignSelf: 'flex-end',
-                        marginTop: 2,
-                        bgcolor: '#00695c',
-                        ':hover': { bgcolor: '#004d40' },
-                    }}
-                >
+<Button
+    variant="outlined"
+    color="primary"
+    onClick={handleNext}
+    sx={{
+        alignSelf: 'flex-end',
+        marginTop: 2,
+        borderColor: '#00695c', // Define a cor da borda
+        color: '#00695c', // Define a cor do texto
+        ':hover': {
+            borderColor: '#004d40', // Cor da borda no hover
+            backgroundColor: 'transparent', // Fundo transparente no hover
+            color: '#004d40', // Cor do texto no hover
+        },
+    }}
+>
             Salvar e avançar
           </Button>
         </Box>
