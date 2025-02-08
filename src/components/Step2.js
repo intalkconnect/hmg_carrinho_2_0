@@ -397,66 +397,88 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
         )}
 
         {modalVisible && (
-          <Box
-            sx={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              bgcolor: 'rgba(0, 0, 0, 0.5)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1300,
-            }}
-          >
-            <Box
-              sx={{
-                width: '300px',
-                bgcolor: 'white',
-                borderRadius: '8px',
-                padding: '16px',
-                textAlign: 'center',
-              }}
-            >
-              <Typography variant="h6" sx={{ mb: 2 }}>
-                Escolha o tipo de entrega
-              </Typography>
-              {metodosFrete.pac !== null && (
-                <Button
-                  variant="contained"
-                  sx={{ mb: 1, width: '100%' }}
-                  onClick={() => {
-                    setFrete(metodosFrete.pac);
-                    handleInputChange({ target: { name: 'frete', value: metodosFrete.pac.toFixed(2) } });
-                    handleInputChange({ target: { name: 'tipoFrete', value: 'PAC' } });
-                    setModalVisible(false);
-                    nextStep();
-                  }}
-                >
-                  PAC - R$ {metodosFrete.pac.toFixed(2)}
-                </Button>
-              )}
-              {metodosFrete.sedex !== null && (
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{ width: '100%' }}
-                  onClick={() => {
-                    setFrete(metodosFrete.sedex);
-                    handleInputChange({ target: { name: 'frete', value: metodosFrete.sedex.toFixed(2) } });
-                    handleInputChange({ target: { name: 'tipoFrete', value: 'SEDEX' } });
-                    setModalVisible(false);
-                    nextStep();
-                  }}
-                >
-                  SEDEX - R$ {metodosFrete.sedex.toFixed(2)}
-                </Button>
-              )}
-            </Box>
-          </Box>
-        )}
+  <Box
+    sx={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      bgcolor: 'rgba(0, 0, 0, 0.7)', // Cor do fundo, agora um pouco mais escura para foco
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1300,
+      transition: 'all 0.3s ease', // Suaviza a transição
+    }}
+  >
+    <Box
+      sx={{
+        width: '90%',
+        maxWidth: '400px', // Maior largura máxima
+        bgcolor: 'white',
+        borderRadius: '16px', // Cantos mais arredondados
+        padding: '24px',
+        textAlign: 'center',
+        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', // Sombra mais suave
+        transition: 'all 0.3s ease', // Transição suave
+      }}
+    >
+      <Typography variant="h6" sx={{ mb: 3, fontWeight: 'bold' }}>
+        Escolha o tipo de entrega
+      </Typography>
+      {metodosFrete.pac !== null && (
+        <Button
+          variant="outlined" // Usando "outlined" para um visual mais moderno
+          sx={{
+            mb: 2,
+            width: '100%',
+            borderColor: '#00695c', // Cor da borda
+            color: '#00695c', // Cor do texto
+            '&:hover': {
+              borderColor: '#004d40',
+              color: '#004d40', // Muda a cor no hover
+            },
+          }}
+          onClick={() => {
+            setFrete(metodosFrete.pac);
+            handleInputChange({ target: { name: 'frete', value: metodosFrete.pac.toFixed(2) } });
+            handleInputChange({ target: { name: 'tipoFrete', value: 'PAC' } });
+            setModalVisible(false);
+            nextStep();
+          }}
+        >
+          PAC - R$ {metodosFrete.pac.toFixed(2)}
+        </Button>
+      )}
+      {metodosFrete.sedex !== null && (
+        <Button
+          variant="outlined"
+          color="secondary"
+          sx={{
+            width: '100%',
+            borderColor: '#ff5722', // Cor da borda
+            color: '#ff5722', // Cor do texto
+            '&:hover': {
+              borderColor: '#d32f2f',
+              color: '#d32f2f', // Muda a cor no hover
+            },
+          }}
+          onClick={() => {
+            setFrete(metodosFrete.sedex);
+            handleInputChange({ target: { name: 'frete', value: metodosFrete.sedex.toFixed(2) } });
+            handleInputChange({ target: { name: 'tipoFrete', value: 'SEDEX' } });
+            setModalVisible(false);
+            nextStep();
+          }}
+        >
+          SEDEX - R$ {metodosFrete.sedex.toFixed(2)}
+        </Button>
+      )}
+    </Box>
+  </Box>
+)}
+
 
         {tipoEntrega === 'retirada' && (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
