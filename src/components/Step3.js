@@ -826,8 +826,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                 <Radio
                   sx={{
                     color: '#00695c',
+                    '&.Mui-checked': { color: '#00695c' },
+                    '&:hover': {
+                    backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
+                    },
                     '&.Mui-checked': { color: '#00695c' }
-                  }}
+                    }}
                   disabled={disableOptions}
                 />
               }
@@ -839,6 +843,10 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                 <Radio
                   sx={{
                     color: '#00695c',
+                    '&.Mui-checked': { color: '#00695c' },
+                    '&:hover': {
+                    backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
+                    },
                     '&.Mui-checked': { color: '#00695c' }
                   }}
                 />
