@@ -59,8 +59,8 @@ const Modal = ({ isVisible, onClose, items }) => {
                         onClick={onClose}
                         sx={{
                             position: 'absolute',
-                            top: 14,
-                            right: 14,
+                            top: 16,
+                            right: 16,
                             color: 'text.secondary',
                         }}
                     >
