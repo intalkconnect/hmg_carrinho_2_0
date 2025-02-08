@@ -290,8 +290,8 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
       display: 'flex',
       flexDirection: 'row',
-      gap: 1.5,  // Gap reduzido
-      justifyContent: 'space-evenly',  // Alinhamento equilibrado
+      gap: 1.5, // Gap reduzido
+      justifyContent: 'space-evenly', // Alinhamento equilibrado
       alignItems: 'center',
       mt: 1,
     }}
@@ -302,13 +302,16 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
         <Radio
           sx={{
             '& .MuiSvgIcon-root': {
-              borderColor: '#00796b', // Linha do rádio
+              borderColor: '#00796b', // Linha do rádio quando não selecionado
             },
             '&.Mui-checked': {
-              color: '#00796b', // Cor do rádio selecionado
+              color: '#00796b', // Cor do ícone quando selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
+            },
+            '&:not(.Mui-checked) .MuiSvgIcon-root': {
+              borderColor: '#00796b', // Garantindo que a borda permaneça verde quando não selecionado
             },
           }}
         />
@@ -328,13 +331,16 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
         <Radio
           sx={{
             '& .MuiSvgIcon-root': {
-              borderColor: '#00796b', // Linha do rádio
+              borderColor: '#00796b', // Linha do rádio quando não selecionado
             },
             '&.Mui-checked': {
-              color: '#00796b', // Cor do rádio selecionado
+              color: '#00796b', // Cor do ícone quando selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
+            },
+            '&:not(.Mui-checked) .MuiSvgIcon-root': {
+              borderColor: '#00796b', // Garantindo que a borda permaneça verde quando não selecionado
             },
           }}
         />
@@ -547,9 +553,6 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     </Box>
   </Box>
 )}
-
-
-
 
         {tipoEntrega === 'retirada' && (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
