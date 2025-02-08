@@ -25,6 +25,8 @@ import { Snackbar, Alert } from '@mui/material';
 // Importe as imagens
 import Logo1 from '../assets/logo.webp';
 import LogoCentro from '../assets/logo1.png';
+import { calculateTotalValue, handleCheckoutSubmission, handleSnackbarOpen } from './helpers';
+
 
 const Checkout = () => {
     const { orcamentos, updateTotalValue, status } = useOrcamentos();
@@ -77,19 +79,9 @@ const Checkout = () => {
         };
     }, []);
 
-    // Cálculo do valor total
-    useEffect(() => {
-        const calculateTotal = () => {
-            const produtosValidos = orcamentos.filter((produto) => produto.orc_qt_potes > 0);
-            const total = produtosValidos.reduce(
-                (sum, produto) => sum + produto.orc_qt_potes * produto.orc_valor_liquido,
-                0
-            ) + parseFloat(formData.frete || 0);
-            setTotalValue(total);
-        };
-
-        calculateTotal();
-    }, [orcamentos, formData.frete]); // Atualiza sempre que os produtos ou frete mudarem
+useEffect(() => {
+    setTotalValue(calculateTotalValue(orcamentos, formData.frete));
+}, [orcamentos, formData.frete]);
 
     if (!status) {
         return (
@@ -185,96 +177,9 @@ const Checkout = () => {
 
 
     // Função para coletar dados e enviar para a API
-    const handleCheckoutSubmission = () => {
-        // Verifica se `orcamentos` é válido e é uma array
-        if (!Array.isArray(orcamentos) || orcamentos.length === 0) {
-            console.log("Erro: Nenhum produto selecionado.");
-            setSnackbar({
-                open: true, message: 'Nenhum produto selecionado. Adicione produtos antes de finalizar o pedido.', severity: 'info'
-            });
-            return;
-        }
-
-        // Filtra os produtos válidos (quantidade maior que 0)
-        const produtosValidos = orcamentos.filter((produto) => produto.orc_qt_potes > 0);
-        console.log("Produtos válidos:", produtosValidos);
-
-        if (produtosValidos.length === 0) {
-            console.log("Erro: Nenhum produto com quantidade válida.");
-            setSnackbar({
-                open: true, message: 'Nenhum produto com quantidade válida. Ajuste o carrinho antes de finalizar o pedido.', severity: 'warning'
-            });
-            return;
-        }
-
-        const id = window.location.pathname.replace('/', '');
-        console.log('Caminho:', window.location.pathname);
-        console.log('ID do checkout:', id);
-
-        const orcPaciente = orcamentos[0]?.orc_paciente;
-        if (!orcPaciente) {
-            console.log("Erro: Dados do paciente não encontrados.");
-            setSnackbar({
-                open: true,
-                message: 'Erro ao processar o cliente. Verifique os dados e tente novamente.',
-                severity: 'error'
-            });
-            return orcamentos;
-        }
-
-        // Monta o payload
-        const payload = {
-            checkout: id,
-            dataFim: new Date().toISOString(),
-            dadosPessoais: {
-                nomeCompleto: formData.nomeCompleto,
-                cpf: formData.cpf,
-                rg: formData.rg,
-                celular: formData.celular,
-                email: formData.email,
-            },
-            enderecoEntrega: formData.tipoEntrega === 'entrega' ? {
-                endereco: formData.endereco,
-                numero: formData.numero,
-                complemento: formData.complemento,
-                bairro: formData.bairro,
-                cidade: formData.cidade,
-                estado: formData.estado,
-                cep: formData.cep,
-                tipoFrete: formData.tipoFrete
-            } : "Local",
-            localRetirada: formData.tipoEntrega === 'retirada' ? formData.localRetirada : null,
-            formaPagamento: formData.formaPagamento || "pix",
-            produtos: produtosValidos,
-            frete: parseFloat(formData.frete),
-            total: produtosValidos.reduce((sum, produto) => sum + produto.orc_qt_potes * produto.orc_valor_liquido, 0) + parseFloat(formData.frete),
-            identity: orcPaciente.replace(/^B/, '') + '@wa.gw.msging.net'
-        };
-        console.log('Payload enviado:', JSON.stringify(payload, null, 2));
-
-        // Envia o payload para a API
-        fetch('https://endpoints-checkout.rzyewu.easypanel.host/finish-checkout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload),
-        })
-            .then((response) => {
-                if (response.ok) {
-                    console.log("Pedido finalizado com sucesso.");
-                    setSnackbar({
-                        open: true, message: 'Pedido finalizado com sucesso!', severity: 'success'
-                    });
-                } else {
-                    console.log("Erro ao finalizar pedido:", response);
-                    setSnackbar({ open: true, message: 'Erro ao finalizar pedido. Tente novamente.', severity: 'error' });
-                }
-            })
-            .catch((error) => {
-                console.error("Erro ao conectar ao servidor:", error);
-                setSnackbar({ open: true, message: 'Erro ao conectar ao servidor. Verifique sua conexão e tente novamente.', severity: 'error' });
-            });
+    const handleCheckout = () => {
+        handleCheckoutSubmission(orcamentos, formData, setSnackbar);
     };
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -497,7 +402,7 @@ const Checkout = () => {
                                     formData={formData}
                                     handleInputChange={handleInputChange}
                                     prevStep={() => setExpanded('step2')}
-                                    finalizeCheckout={handleCheckoutSubmission} // Passa a função
+                                    finalizeCheckout={handleCheckout} // Passa a função
                                     totalValue={totalValue} // Total agora é passado para Step3
 
                                 />
