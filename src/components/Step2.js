@@ -464,16 +464,15 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       {metodosFrete.sedex !== null && (
         <Button
           variant="outlined"
-          color="secondary"
           sx={{
             width: '100%',
-            borderColor: '#d32f2f', // Cor suave para borda
-            color: '#d32f2f', // Texto na mesma cor
+            borderColor: '#0288d1', // Cor suave de borda (azul)
+            color: '#0288d1', // Texto na mesma cor
             fontWeight: '500',
             '&:hover': {
-              borderColor: '#b71c1c', // Cor no hover
-              color: '#b71c1c', // Texto no hover
-              backgroundColor: 'rgba(211, 47, 47, 0.1)', // Cor de fundo suave no hover
+              borderColor: '#0277bd', // Cor no hover (azul escuro)
+              color: '#0277bd', // Texto no hover
+              backgroundColor: 'rgba(2, 136, 209, 0.1)', // Cor de fundo suave no hover
             },
             transition: 'all 0.2s ease',
           }}
@@ -491,6 +490,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     </Box>
   </Box>
 )}
+
 
 
 
