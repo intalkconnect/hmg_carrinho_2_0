@@ -317,8 +317,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       sx={{
         '& .MuiFormControlLabel-label': {
           fontWeight: 500,
-          color: '#333',
-          fontSize: '14px',
+          color: '#333'
         },
       }}
     />
@@ -342,8 +341,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       sx={{
         '& .MuiFormControlLabel-label': {
           fontWeight: 500,
-          color: '#333',
-          fontSize: '14px',
+          color: '#333'
         },
       }}
     />
