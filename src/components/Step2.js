@@ -290,8 +290,8 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
       display: 'flex',
       flexDirection: 'row',
-      gap: 1.5,  // Reduzido o gap entre os itens
-      justifyContent: 'space-evenly',  // Mantém a distribuição equilibrada
+      gap: 1.5,  // Gap reduzido
+      justifyContent: 'space-evenly',  // Alinhamento equilibrado
       alignItems: 'center',
       mt: 1,
     }}
@@ -301,6 +301,9 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
+            '& .MuiSvgIcon-root': {
+              borderColor: '#00796b', // Linha do rádio
+            },
             '&.Mui-checked': {
               color: '#00796b', // Cor do rádio selecionado
             },
@@ -315,7 +318,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
         '& .MuiFormControlLabel-label': {
           fontWeight: 500,
           color: '#333',
-          fontSize: '14px', // Tamanho do texto
+          fontSize: '14px',
         },
       }}
     />
@@ -324,11 +327,14 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
+            '& .MuiSvgIcon-root': {
+              borderColor: '#00796b', // Linha do rádio
+            },
             '&.Mui-checked': {
-              color: '#0288d1', // Cor do rádio selecionado
+              color: '#00796b', // Cor do rádio selecionado
             },
             '&:hover': {
-              backgroundColor: 'rgba(2, 136, 209, 0.1)', // Efeito hover suave
+              backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
           }}
         />
@@ -338,7 +344,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
         '& .MuiFormControlLabel-label': {
           fontWeight: 500,
           color: '#333',
-          fontSize: '14px', // Tamanho do texto
+          fontSize: '14px',
         },
       }}
     />
@@ -349,8 +355,6 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     </Typography>
   )}
 </FormControl>
-
-
 
         {tipoEntrega === 'entrega' && (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
