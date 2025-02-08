@@ -404,7 +404,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       left: 0,
       width: '100%',
       height: '100%',
-      bgcolor: 'rgba(0, 0, 0, 0.7)', // Cor do fundo, agora um pouco mais escura para foco
+      bgcolor: 'rgba(0, 0, 0, 0.3)', // Fundo suave e sutil
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -415,30 +415,40 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     <Box
       sx={{
         width: '90%',
-        maxWidth: '400px', // Maior largura máxima
-        bgcolor: 'white',
-        borderRadius: '16px', // Cantos mais arredondados
-        padding: '24px',
+        maxWidth: '400px',
+        bgcolor: '#fff',
+        borderRadius: '12px',
+        padding: '20px',
         textAlign: 'center',
-        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', // Sombra mais suave
+        boxShadow: '0px 6px 24px rgba(0, 0, 0, 0.12)', // Sombra suave e moderna
         transition: 'all 0.3s ease', // Transição suave
       }}
     >
-      <Typography variant="h6" sx={{ mb: 3, fontWeight: 'bold' }}>
+      <Typography
+        variant="h6"
+        sx={{
+          mb: 3,
+          fontWeight: '500',
+          color: '#333', // Texto escuro para contraste
+        }}
+      >
         Escolha o tipo de entrega
       </Typography>
       {metodosFrete.pac !== null && (
         <Button
-          variant="outlined" // Usando "outlined" para um visual mais moderno
+          variant="outlined"
           sx={{
             mb: 2,
             width: '100%',
-            borderColor: '#00695c', // Cor da borda
-            color: '#00695c', // Cor do texto
+            borderColor: '#00796b', // Cor suave para borda
+            color: '#00796b', // Texto na mesma cor
+            fontWeight: '500',
             '&:hover': {
-              borderColor: '#004d40',
-              color: '#004d40', // Muda a cor no hover
+              borderColor: '#004d40', // Cor no hover
+              color: '#004d40', // Texto no hover
+              backgroundColor: 'rgba(0, 121, 107, 0.1)', // Cor de fundo suave no hover
             },
+            transition: 'all 0.2s ease',
           }}
           onClick={() => {
             setFrete(metodosFrete.pac);
@@ -457,12 +467,15 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
           color="secondary"
           sx={{
             width: '100%',
-            borderColor: '#ff5722', // Cor da borda
-            color: '#ff5722', // Cor do texto
+            borderColor: '#d32f2f', // Cor suave para borda
+            color: '#d32f2f', // Texto na mesma cor
+            fontWeight: '500',
             '&:hover': {
-              borderColor: '#d32f2f',
-              color: '#d32f2f', // Muda a cor no hover
+              borderColor: '#b71c1c', // Cor no hover
+              color: '#b71c1c', // Texto no hover
+              backgroundColor: 'rgba(211, 47, 47, 0.1)', // Cor de fundo suave no hover
             },
+            transition: 'all 0.2s ease',
           }}
           onClick={() => {
             setFrete(metodosFrete.sedex);
@@ -478,6 +491,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     </Box>
   </Box>
 )}
+
 
 
         {tipoEntrega === 'retirada' && (
