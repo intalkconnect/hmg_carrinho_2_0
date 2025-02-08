@@ -432,6 +432,28 @@ useEffect(() => {
                 </Alert>
             </Snackbar>
         </Box>
+        <Box
+            sx={{
+                bgcolor: '#ffffff',
+                py: 3,
+                mt: 4,
+                display: 'flex',
+                justifyContent: 'center',
+                textAlign: 'center',
+                borderTop: '1px solid #ddd',
+            }}
+        >
+            <Typography variant="body2" color="text.secondary">
+                Nature Derme Pharmácia de Manipulação Ltda | CNPJ: 25.391.756/0001-30
+                <br />
+                Farmacêutico Responsável: Leonardo Tomaz Alves | CRF-SP: 24992
+                <br />
+                As informações fornecidas neste site são apenas para fins informativos e não devem ser utilizadas para automedicação. Elas não substituem, em hipótese alguma, o diagnóstico ou tratamento prescrito por um profissional médico. Apenas um médico qualificado está apto a diagnosticar problemas de saúde e prescrever o tratamento adequado.
+                <br />
+                Em caso de persistência dos sintomas, consulte um médico.
+            </Typography>
+        </Box>
+    </Box>
 
     );
 };
