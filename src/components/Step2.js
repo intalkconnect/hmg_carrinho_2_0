@@ -283,21 +283,73 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       <Box component="form" noValidate autoComplete="off" sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: '600px' }}>
         <Typography variant="body1">Escolha a melhor opção para receber ou retirar o seu produto.</Typography>
         <FormControl component="fieldset" sx={{ mb: 3 }} error={!!errors.tipoEntrega}>
-          <RadioGroup
-            name="tipoEntrega"
-            value={tipoEntrega}
-            onChange={handleOptionChange}
-            sx={{ flexDirection: 'row', gap: 2, mt: 1 }}
-          >
-            <FormControlLabel value="entrega" control={<Radio />} label="Entrega" />
-            <FormControlLabel value="retirada" control={<Radio />} label="Retirada" />
-          </RadioGroup>
-          {errors.tipoEntrega && (
-            <Typography variant="body2" color="error" sx={{ mt: 1 }}>
-              {errors.tipoEntrega}
-            </Typography>
-          )}
-        </FormControl>
+  <RadioGroup
+    name="tipoEntrega"
+    value={tipoEntrega}
+    onChange={handleOptionChange}
+    sx={{
+      display: 'flex',
+      flexDirection: 'row',
+      gap: 2,
+      justifyContent: 'space-between',
+      mt: 1,
+      alignItems: 'center',
+    }}
+  >
+    <FormControlLabel
+      value="entrega"
+      control={
+        <Radio
+          sx={{
+            '&.Mui-checked': {
+              color: '#00796b', // Cor do rádio selecionado
+            },
+            '&:hover': {
+              backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
+            },
+          }}
+        />
+      }
+      label="Entrega"
+      sx={{
+        '& .MuiFormControlLabel-label': {
+          fontWeight: 500,
+          color: '#333',
+          fontSize: '14px', // Tamanho do texto
+        },
+      }}
+    />
+    <FormControlLabel
+      value="retirada"
+      control={
+        <Radio
+          sx={{
+            '&.Mui-checked': {
+              color: '#0288d1', // Cor do rádio selecionado
+            },
+            '&:hover': {
+              backgroundColor: 'rgba(2, 136, 209, 0.1)', // Efeito hover suave
+            },
+          }}
+        />
+      }
+      label="Retirada"
+      sx={{
+        '& .MuiFormControlLabel-label': {
+          fontWeight: 500,
+          color: '#333',
+          fontSize: '14px', // Tamanho do texto
+        },
+      }}
+    />
+  </RadioGroup>
+  {errors.tipoEntrega && (
+    <Typography variant="body2" color="error" sx={{ mt: 1 }}>
+      {errors.tipoEntrega}
+    </Typography>
+  )}
+</FormControl>
+
 
         {tipoEntrega === 'entrega' && (
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
