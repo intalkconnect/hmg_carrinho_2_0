@@ -59,7 +59,7 @@ const Modal = ({ isVisible, onClose, items }) => {
                         onClick={onClose}
                         sx={{
                             position: 'absolute',
-                            top: 8,
+                            top: 6,
                             right: 8,
                             color: 'text.secondary',
                         }}
@@ -89,7 +89,7 @@ const Modal = ({ isVisible, onClose, items }) => {
                                 color: 'text.primary',
                             }}
                         >
-                            Quantidade
+                            Qtnd
                         </Typography>
                     </Stack>
 
