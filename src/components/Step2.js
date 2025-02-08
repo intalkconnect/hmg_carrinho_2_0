@@ -282,7 +282,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     <Box sx={{ p: 3 }}>
       <Box component="form" noValidate autoComplete="off" sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxWidth: '600px' }}>
         <Typography variant="body1">Escolha a melhor opção para receber ou retirar o seu produto.</Typography>
-        <FormControl component="fieldset" sx={{ mb: 3 }} error={!!errors.tipoEntrega}>
+        <FormControl component="fieldset" sx={{ mb: 2 }} error={!!errors.tipoEntrega}>
   <RadioGroup
     name="tipoEntrega"
     value={tipoEntrega}
@@ -290,10 +290,10 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
       display: 'flex',
       flexDirection: 'row',
-      gap: 2,
-      justifyContent: 'space-between',
-      mt: 1,
+      gap: 1.5,  // Reduzido o gap entre os itens
+      justifyContent: 'space-evenly',  // Mantém a distribuição equilibrada
       alignItems: 'center',
+      mt: 1,
     }}
   >
     <FormControlLabel
@@ -349,6 +349,7 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     </Typography>
   )}
 </FormControl>
+
 
 
         {tipoEntrega === 'entrega' && (
