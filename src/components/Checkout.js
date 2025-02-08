@@ -206,9 +206,7 @@ useEffect(() => {
             setIsStep1Completed(true);
             setExpanded('step2');
         } else {
-            setSnackbar({
-                open: true, message: 'Por favor, preencha todos os campos obrigatórios.', severity: 'warning'
-            });
+            handleSnackbarOpen(setSnackbar, message: 'Por favor, preencha todos os campos obrigatórios.', severity: 'warning');
         }
     };
 
