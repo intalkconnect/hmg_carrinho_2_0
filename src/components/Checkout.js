@@ -310,123 +310,132 @@ const Checkout = () => {
                         }}
                     >
                         <Accordion
-                            expanded={expanded === 'step1'}
-                            onChange={handleAccordionChange('step1')}
-                            sx={{
-                                marginBottom: 2,
-                                border: '1px solid #ddd',
-                                borderRadius: 2,
-                            }}
-                        >
-                            <AccordionSummary
-                                expandIcon={
-                                    expanded === 'step1' ? (
-                                        <CircleChevronUp color="#00695c" />
-                                    ) : (
-                                        <CircleChevronDown color="#00695c" />
-                                    )
-                                }
-                                sx={{ bgcolor: expanded === 'step1' ? '#e8f5e9' : '#ffffff' }}
-                            >
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    {isStep1Completed ? (
-                                        <CircleCheckBig color='#00695c' />
-                                    ) : (
-                                        <CircleUser color='#00695c' />
-                                    )}
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
-                                        Dados Pessoais
-                                    </Typography>
-                                </Box>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Step1
-                                    formData={formData}
-                                    handleInputChange={handleInputChange}
-                                    nextStep={handleStep1Complete}
-                                />
-                            </AccordionDetails>
-                        </Accordion>
+    expanded={expanded === 'step1'}
+    onChange={handleAccordionChange('step1')}
+    sx={{
+        marginBottom: 2,
+        border: '1px solid #ddd',
+        borderRadius: 2,
+    }}
+>
+    <AccordionSummary
+        expandIcon={
+            <Box
+                sx={{
+                    transition: 'transform 0.3s ease',
+                    transform: expanded === 'step1' ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+            >
+                <CircleChevronDown color="#00695c" />
+            </Box>
+        }
+        sx={{ bgcolor: expanded === 'step1' ? '#e8f5e9' : '#ffffff' }}
+    >
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            {isStep1Completed ? (
+                <CircleCheckBig color="#00695c" />
+            ) : (
+                <CircleUser color="#00695c" />
+            )}
+            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
+                Dados Pessoais
+            </Typography>
+        </Box>
+    </AccordionSummary>
+    <AccordionDetails>
+        <Step1
+            formData={formData}
+            handleInputChange={handleInputChange}
+            nextStep={handleStep1Complete}
+        />
+    </AccordionDetails>
+</Accordion>
 
-                        <Accordion
-                            expanded={expanded === 'step2'}
-                            onChange={handleAccordionChange('step2')}
-                            disabled={!isStep1Completed}
-                            sx={{
-                                marginBottom: 2,
-                                border: '1px solid #ddd',
-                                borderRadius: 2,
-                            }}
-                        >
-                            <AccordionSummary
-                                expandIcon={
-                                    expanded === 'step2' ? (
-                                        <CircleChevronUp color="#00695c" />
-                                    ) : (
-                                        <CircleChevronDown color="#00695c" />
-                                    )
-                                }
-                                sx={{ bgcolor: expanded === 'step2' ? '#e8f5e9' : '#ffffff' }}
-                            >
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    {isStep2Completed ? (
-                                        <CircleCheckBig color='#00695c' />
-                                    ) : (
-                                        <Package color='#00695c' />
-                                    )}
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
-                                        Entrega ou Retirada
-                                    </Typography>
-                                </Box>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Step2
-                                    formData={formData}
-                                    handleInputChange={handleInputChange}
-                                    nextStep={handleStep2Complete}
-                                    prevStep={() => setExpanded('step1')}
-                                />
-                            </AccordionDetails>
-                        </Accordion>
+<Accordion
+    expanded={expanded === 'step2'}
+    onChange={handleAccordionChange('step2')}
+    disabled={!isStep1Completed}
+    sx={{
+        marginBottom: 2,
+        border: '1px solid #ddd',
+        borderRadius: 2,
+    }}
+>
+    <AccordionSummary
+        expandIcon={
+            <Box
+                sx={{
+                    transition: 'transform 0.3s ease',
+                    transform: expanded === 'step2' ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+            >
+                <CircleChevronDown color="#00695c" />
+            </Box>
+        }
+        sx={{ bgcolor: expanded === 'step2' ? '#e8f5e9' : '#ffffff' }}
+    >
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            {isStep2Completed ? (
+                <CircleCheckBig color="#00695c" />
+            ) : (
+                <Package color="#00695c" />
+            )}
+            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
+                Entrega ou Retirada
+            </Typography>
+        </Box>
+    </AccordionSummary>
+    <AccordionDetails>
+        <Step2
+            formData={formData}
+            handleInputChange={handleInputChange}
+            nextStep={handleStep2Complete}
+            prevStep={() => setExpanded('step1')}
+        />
+    </AccordionDetails>
+</Accordion>
 
-                        <Accordion
-                            expanded={expanded === 'step3'}
-                            onChange={handleAccordionChange('step3')}
-                            disabled={!isStep2Completed}
-                            sx={{
-                                marginBottom: 2,
-                                border: '1px solid #ddd',
-                                borderRadius: 2,
-                            }}
-                        >
-                            <AccordionSummary
-                                expandIcon={
-                                    expanded === 'step3' ? (
-                                        <CircleChevronUp color="#00695c" />
-                                    ) : (
-                                        <CircleChevronDown color="#00695c" />
-                                    )
-                                }
-                                sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
-                            >
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <CreditCard color='#00695c' />
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
-                                        Formas de Pagamento
-                                    </Typography>
-                                </Box>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Step3
-                                    formData={formData}
-                                    handleInputChange={handleInputChange}
-                                    prevStep={() => setExpanded('step2')}
-                                    finalizeCheckout={handleCheckout} // Passa a função
-                                    totalValue={totalValue} // Total agora é passado para Step3
+<Accordion
+    expanded={expanded === 'step3'}
+    onChange={handleAccordionChange('step3')}
+    disabled={!isStep2Completed}
+    sx={{
+        marginBottom: 2,
+        border: '1px solid #ddd',
+        borderRadius: 2,
+    }}
+>
+    <AccordionSummary
+        expandIcon={
+            <Box
+                sx={{
+                    transition: 'transform 0.3s ease',
+                    transform: expanded === 'step3' ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+            >
+                <CircleChevronDown color="#00695c" />
+            </Box>
+        }
+        sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
+    >
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <CreditCard color="#00695c" />
+            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
+                Formas de Pagamento
+            </Typography>
+        </Box>
+    </AccordionSummary>
+    <AccordionDetails>
+        <Step3
+            formData={formData}
+            handleInputChange={handleInputChange}
+            prevStep={() => setExpanded('step2')}
+            finalizeCheckout={handleCheckout}
+            totalValue={totalValue}
+        />
+    </AccordionDetails>
+</Accordion>
 
-                                />
-                            </AccordionDetails>
-                        </Accordion>
                     </Grid>
                 </Grid>
             </Container>
