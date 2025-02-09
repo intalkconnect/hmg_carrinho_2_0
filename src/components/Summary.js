@@ -8,9 +8,7 @@ import {
   Paper,
 } from '@mui/material';
 import { AddCircle, Delete } from '@mui/icons-material';
-import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import { Pill, FlaskConical, Package, Inventory2, milk, archive } from "lucide-react";
+import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
@@ -51,16 +49,16 @@ const getIconByType = (tipo) => {
 
   if (normalizedType === "CAPSULA") return <Pill color="#00796b" />;
   if (["CREME", "LOCAO", "XAMPU", "GEL", "POMADA"].includes(normalizedType)) {
-    return <milk color="secondary" />;
+    return <Milk color="secondary" />;
   }
   if (["XAROPE", "SOLUCAO ORAL"].includes(normalizedType)) {
     return <FlaskConical color="#673ab7" />;
   }
-  if (normalizedType === "FILTRO SOLAR") return <spray-can color="#9e9e9e" />;
-  if (normalizedType === "BISCOITO MEDICAMENTOSO") return <cookie color="#9e9e9e" />;
+  if (normalizedType === "FILTRO SOLAR") return <SprayCan color="#9e9e9e" />;
+  if (normalizedType === "BISCOITO MEDICAMENTOSO") return <Cookie color="#9e9e9e" />;
   if (normalizedType === "ENVELOPE") return <Package color="#ff9800" />;
   
-  return <archive color="disabled" />;
+  return <Archive color="disabled" />;
 };
 
   const totalValue =
@@ -139,7 +137,7 @@ const getIconByType = (tipo) => {
                       sx={{ color: '#00695c' }}
                       onClick={() => handleOpenModal(item.orcamentoItens)}
                     >
-                      <ManageSearchIcon />
+                      <FileSearch />
                     </IconButton>
                   )}
                 </Box>
