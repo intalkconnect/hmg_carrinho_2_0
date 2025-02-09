@@ -366,7 +366,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
 
         try {
           const status = await checkPaymentStatus(charge.id);
-          if (status.status === 'RECEIVED') {
+          if (status?.status === 'RECEIVED') {
             clearInterval(paymentIntervalRef.current);
             setPaymentStatus('PAID');
             finalizeCheckout();
@@ -374,6 +374,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
             setLoading(false);
           }
         } catch (error) {
+          console.log('Status recebido:', status);
+
           console.error("Erro na verificação:", error);
         }
       }, 30000);
