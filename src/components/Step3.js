@@ -747,124 +747,130 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
   return (
     <Box sx={{ p: 3 }}>
       {paymentStatus === 'PAID' && (
-        <Box
-          sx={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.9)',
-            zIndex: 9999,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#fff',
-            textAlign: 'center',
-            padding: 4,
-            animation: 'fadeIn 0.5s ease-in-out',
-            '@keyframes fadeIn': {
-              from: { opacity: 0 },
-              to: { opacity: 1 },
-            }
+  <Box
+    sx={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100vh',
+      backgroundColor: 'rgba(0, 0, 0, 0.9)',
+      zIndex: 9999,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: '#fff',
+      textAlign: 'center',
+      padding: { xs: 2, sm: 3, md: 4 },
+      animation: 'fadeIn 0.5s ease-in-out',
+      '@keyframes fadeIn': {
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+      }
+    }}
+  >
+    <Box
+      sx={{
+        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        borderRadius: { xs: 2, sm: 3, md: 4 },
+        padding: { xs: 2, sm: 3, md: 4 },
+        maxWidth: { xs: '95%', sm: 450, md: 500 },
+        width: '100%',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+        backdropFilter: 'blur(10px)',
+        border: '1px solid rgba(255, 255, 255, 0.125)',
+        margin: { xs: 2, sm: 0 },
+        animation: 'scaleUp 0.5s ease-in-out forwards',
+        '@keyframes scaleUp': {
+          from: { transform: 'scale(0.9)', opacity: 0 },
+          to: { transform: 'scale(1)', opacity: 1 },
+        }
+      }}
+    >
+      <Box
+        sx={{
+          width: { xs: 80, sm: 90, md: 100 },
+          height: { xs: 80, sm: 90, md: 100 },
+          borderRadius: '50%',
+          backgroundColor: 'rgba(0, 200, 83, 0.2)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: '0 auto',
+          marginBottom: { xs: 2, sm: 3 },
+          animation: 'pulse 1.5s infinite',
+          '@keyframes pulse': {
+            '0%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(0, 200, 83, 0.4)' },
+            '70%': { transform: 'scale(1.05)', boxShadow: '0 0 0 20px rgba(0, 200, 83, 0)' },
+            '100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(0, 200, 83, 0)' }
+          }
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#00c853"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            width: '60%',
+            height: '60%'
           }}
         >
-          <Box
-            sx={{
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: 4,
-              padding: 4,
-              maxWidth: 500,
-              width: '100%',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.125)',
-              transform: 'scale(0.9)',
-              animation: 'scaleUp 0.5s ease-in-out forwards',
-              '@keyframes scaleUp': {
-                from: { transform: 'scale(0.9)', opacity: 0 },
-                to: { transform: 'scale(1)', opacity: 1 },
-              }
-            }}
-          >
-            <Box
-              sx={{
-                width: 100,
-                height: 100,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(0, 200, 83, 0.2)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                margin: '0 auto 20px',
-                animation: 'pulse 1.5s infinite',
-                '@keyframes pulse': {
-                  '0%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(0, 200, 83, 0.4)' },
-                  '70%': { transform: 'scale(1.05)', boxShadow: '0 0 0 20px rgba(0, 200, 83, 0)' },
-                  '100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(0, 200, 83, 0)' }
-                }
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="60"
-                height="60"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#00c853"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-            </Box>
-            <Typography
-              variant="h4"
-              sx={{
-                mb: 2,
-                color: '#00c853',
-                fontWeight: 'bold',
-                textShadow: '0 2px 4px rgba(0,0,0,0.2)'
-              }}
-            >
-              Pagamento Confirmado!
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                mb: 3,
-                color: '#fff',
-                opacity: 0.8,
-              }}
-            >
-              Seu pedido foi processado com sucesso.
-              Você será redirecionado em {redirectCountdown} segundos...
-            </Typography>
-            <Box
-              sx={{
-                width: '100%',
-                height: 4,
-                backgroundColor: 'rgba(0, 200, 83, 0.3)',
-                borderRadius: 2,
-                overflow: 'hidden',
-                position: 'relative',
-                mb: 2
-              }}
-            >
-              <Box
-                sx={{
-                  width: `${(redirectCountdown / 5) * 100}%`,
-                  height: '100%',
-                  backgroundColor: '#00c853',
-                  transition: 'width 1s linear'
-                }}
-              />
-            </Box>
-          </Box>
-        </Box>
-      )}
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </Box>
+      <Typography
+        variant="h4"
+        sx={{
+          mb: { xs: 1.5, sm: 2 },
+          color: '#00c853',
+          fontWeight: 'bold',
+          textShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          fontSize: { xs: '1.5rem', sm: '2rem', md: '2.125rem' }
+        }}
+      >
+        Pagamento Confirmado!
+      </Typography>
+      <Typography
+        sx={{
+          mb: { xs: 2, sm: 3 },
+          color: '#fff',
+          opacity: 0.8,
+          fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' },
+          px: { xs: 1, sm: 2 }
+        }}
+      >
+        Seu pedido foi processado com sucesso.
+        <Box component="br" sx={{ display: { xs: 'block', sm: 'none' } }} />
+        Você será redirecionado em {redirectCountdown} segundos...
+      </Typography>
+      <Box
+        sx={{
+          width: '100%',
+          height: 4,
+          backgroundColor: 'rgba(0, 200, 83, 0.3)',
+          borderRadius: 2,
+          overflow: 'hidden',
+          position: 'relative',
+          mb: 2
+        }}
+      >
+        <Box
+          sx={{
+            width: `${(redirectCountdown / 5) * 100}%`,
+            height: '100%',
+            backgroundColor: '#00c853',
+            transition: 'width 1s linear'
+          }}
+        />
+      </Box>
+    </Box>
+  </Box>
+)}
       <Typography variant="h6" sx={{ mb: 2 }}>Escolha a forma de pagamento:</Typography>
 
       <Box
