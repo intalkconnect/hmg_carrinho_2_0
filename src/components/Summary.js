@@ -10,11 +10,8 @@ import {
 import { AddCircle, Delete } from '@mui/icons-material';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import MedicationIcon from '@mui/icons-material/Medication';
-import LiquorIcon from '@mui/icons-material/Liquor';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import CookieIcon from '@mui/icons-material/Cookie';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
+import { Medication, LocalPharmacy, Liquor, WbSunny, Cookie, Inventory2, Mail } from '@mui/icons-material';
+
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
 
@@ -45,14 +42,26 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
     document.activeElement.blur();
   };
 
-  const getIconByType = (tipo) => {
-    if (/^Cápsulas$/mi.test(tipo)) return <MedicationIcon color="primary" />;
-    if (/^(Creme|Loção|Xampu|Gel|Pomada)$/mi.test(tipo)) return <LocalPharmacyIcon color="secondary" />;
-    if (/^(Xarope|Solução Oral)$/mi.test(tipo)) return <LiquorIcon color="action" />;
-    if (/^Filtro Solar$/mi.test(tipo)) return <WbSunnyIcon color="warning" />;
-    if (/^Biscoito Medicamentoso$/mi.test(tipo)) return <CookieIcon color="info" />;
-    return <Inventory2Icon color="disabled" />;
-  };
+const getIconByType = (tipo) => {
+  // Função para normalizar string (remover acentos e transformar em maiúsculas)
+  const normalizeText = (text) => 
+    text?.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase();
+
+  const normalizedType = normalizeText(tipo || '');
+
+  if (normalizedType === "CAPSULA") return <Medication color="primary" />;
+  if (["CREME", "LOCAO", "XAMPU", "GEL", "POMADA"].includes(normalizedType)) {
+    return <LocalPharmacy color="secondary" />;
+  }
+  if (["XAROPE", "SOLUCAO ORAL"].includes(normalizedType)) {
+    return <Liquor color="action" />;
+  }
+  if (normalizedType === "FILTRO SOLAR") return <WbSunny color="warning" />;
+  if (normalizedType === "BISCOITO MEDICAMENTOSO") return <Cookie color="info" />;
+  if (normalizedType === "ENVELOPE") return <Mail color="success" />;
+  
+  return <Inventory2 color="disabled" />;
+};
 
   const totalValue =
     orcamentos.reduce(
