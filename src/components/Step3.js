@@ -260,7 +260,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
 
   const deletePixCharge = async (pixId) => {
     try {
-      await fetch(`${baseURL}/payments/${pixId}`, {
+      await fetch(`${baseURL}/payments/deletePix?id=${pixId}`, {
         method: 'DELETE',
         headers: {
           accept: 'application/json',
