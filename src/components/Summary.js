@@ -96,7 +96,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
             >
               {/* Ícone e Nome do Produto */}
               <Grid item xs={1}>
-                {getIconByType(item.orc_Volume_Unidade)}
+                {getIconByType(item.orc_forma_farmac)}
               </Grid>
               <Grid item xs={8}>
                 <Box
