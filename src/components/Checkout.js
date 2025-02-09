@@ -447,8 +447,6 @@ const Checkout = () => {
                     </Grid>
                 </Grid>
             </Container>
-// Adicione antes do último </Box> no return do componente Checkout:
-
 <Box 
     component="footer" 
     sx={{
