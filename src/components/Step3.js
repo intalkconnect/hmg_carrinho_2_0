@@ -287,7 +287,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
   };
 
   const checkPaymentStatus = async (paymentId) => {
-    console.log(formaPagamentoRef.current);
+    console.log("forma de pagamento:" , formaPagamentoRef.current);
     if (formaPagamentoRef.current !== 'pix') {
       if (activePixId.current) {
         await deletePixCharge(activePixId.current);
