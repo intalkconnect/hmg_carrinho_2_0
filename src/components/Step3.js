@@ -376,7 +376,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           }
 
         } catch (error) {
-          console.log('Status recebido:', status);
+          console.log('Status recebido:', paymentStatus);
           console.error("Erro na verificação:", error);
         }
       }, 30000);
