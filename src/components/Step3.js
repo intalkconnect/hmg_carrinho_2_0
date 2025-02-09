@@ -379,7 +379,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       try {
         console.log(`Verificando status do pagamento: ${charge.id}`);
         const paymentStatus = await checkPaymentStatus(charge.id);
-        console.log('Status atual do pagamento:', paymentStatus);
+        console.log('Status atual do pagamento:', paymentStatus?.status);
 
         if (paymentStatus?.status === 'RECEIVED' || paymentStatus?.status === 'CONFIRMED') {
           console.log('=== PAGAMENTO CONFIRMADO ===');
