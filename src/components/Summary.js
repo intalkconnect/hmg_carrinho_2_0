@@ -10,7 +10,7 @@ import {
 import { AddCircle, Delete } from '@mui/icons-material';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import { Pill, FlaskConical, Package, Inventory2, milk } from "lucide-react";
+import { Pill, FlaskConical, Package, Inventory2, milk, archive } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
@@ -60,7 +60,7 @@ const getIconByType = (tipo) => {
   if (normalizedType === "BISCOITO MEDICAMENTOSO") return <cookie color="#9e9e9e" />;
   if (normalizedType === "ENVELOPE") return <Package color="#ff9800" />;
   
-  return <Inventory2 color="disabled" />;
+  return <archive color="disabled" />;
 };
 
   const totalValue =
