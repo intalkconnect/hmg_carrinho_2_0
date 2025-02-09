@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { circle-check-big } from "lucide-react";
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'; // Importa o ícone
 
@@ -325,7 +326,7 @@ useEffect(() => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep1Completed ? (
-                                        <CheckCircleIcon sx={{ color: '#81c784' }} />
+                                        <circle-check-big sx={{ color: '#81c784' }} />
                                     ) : (
                                         <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
                                     )}
@@ -359,7 +360,7 @@ useEffect(() => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep2Completed ? (
-                                        <CheckCircleIcon sx={{ color: '#81c784' }} />
+                                        <circle-check-big sx={{ color: '#81c784' }} />
                                     ) : (
                                         <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
                                     )}
