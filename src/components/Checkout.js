@@ -447,8 +447,6 @@ const Checkout = () => {
                     </Grid>
                 </Grid>
             </Container>
-// Atualize o footer para:
-
 <Box 
     component="footer" 
     sx={{
