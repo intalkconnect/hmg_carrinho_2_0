@@ -10,7 +10,7 @@ import {
 import { AddCircle, Delete } from '@mui/icons-material';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import { Pill, Syringe, FlaskConical, Package } from "lucide-react";
+import { Pill, Syringe, FlaskConical, Package, LocalPharmacy, Inventory2 } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
