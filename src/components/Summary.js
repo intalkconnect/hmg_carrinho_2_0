@@ -8,7 +8,7 @@ import {
   Paper,
 } from '@mui/material';
 import { AddCircle, Delete } from '@mui/icons-material';
-import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan } from "lucide-react";
+import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan, Cookie } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
