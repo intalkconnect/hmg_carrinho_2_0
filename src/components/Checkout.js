@@ -360,7 +360,7 @@ const Checkout = () => {
                         >
                             <AccordionSummary
                                 expandIcon={
-                                    expanded === 'step1' ? (
+                                    expanded === 'step2' ? (
                                         <CircleChevronUp color="#00695c" />
                                     ) : (
                                         <CircleChevronDown color="#00695c" />
@@ -401,7 +401,7 @@ const Checkout = () => {
                         >
                             <AccordionSummary
                                 expandIcon={
-                                    expanded === 'step1' ? (
+                                    expanded === 'step3' ? (
                                         <CircleChevronUp color="#00695c" />
                                     ) : (
                                         <CircleChevronDown color="#00695c" />
