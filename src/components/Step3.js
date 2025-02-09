@@ -102,10 +102,10 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           accept: 'application/json',
         //access_token: ASaasToken,
         },
-        body: JSON.stringify({
+        body: {
           name: formData.nomeCompleto,
           cpfCnpj: formData.cpf,
-        }),
+        },
       });
       return await response.json();
     } catch (error) {
@@ -239,12 +239,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           accept: 'application/json',
         //access_token: ASaasToken,
         },
-        body: JSON.stringify({
+        body: {
           billingType: 'PIX',
           customer: customerId,
           value: parseFloat(totalValue).toFixed(2),
           dueDate: dueDate.toISOString().split('T')[0],
-        }),
+        },
       });
       const data = await response.json();
       activePixId.current = data.id;
@@ -629,7 +629,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           accept: 'application/json',
           //access_token: ASaasToken,
         },
-        body: JSON.stringify(payload),
+        body: payload,
       });
 
       const data = await response.json();
