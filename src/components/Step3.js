@@ -261,7 +261,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
         method: 'DELETE',
         headers: {
           accept: 'application/json',
-          access_token: ASaasToken,
+        //access_token: ASaasToken,
         },
       });
     } catch (error) {
