@@ -10,7 +10,7 @@ import {
 import { AddCircle, Delete } from '@mui/icons-material';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import { Medication, LocalPharmacy, Liquor, WbSunny, Cookie, Inventory2, Mail } from '@mui/icons-material';
+import { Pill, Syringe, FlaskConical, Package } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
@@ -49,16 +49,16 @@ const getIconByType = (tipo) => {
 
   const normalizedType = normalizeText(tipo || '');
 
-  if (normalizedType === "CAPSULA") return <Medication color="primary" />;
+  if (normalizedType === "CAPSULA") return <Pill color="#00796b" />;
   if (["CREME", "LOCAO", "XAMPU", "GEL", "POMADA"].includes(normalizedType)) {
     return <LocalPharmacy color="secondary" />;
   }
   if (["XAROPE", "SOLUCAO ORAL"].includes(normalizedType)) {
-    return <Liquor color="action" />;
+    return <FlaskConical color="#673ab7" />;
   }
-  if (normalizedType === "FILTRO SOLAR") return <WbSunny color="warning" />;
-  if (normalizedType === "BISCOITO MEDICAMENTOSO") return <Cookie color="info" />;
-  if (normalizedType === "ENVELOPE") return <Mail color="success" />;
+  if (normalizedType === "FILTRO SOLAR") return <spray-can color="#9e9e9e" />;
+  if (normalizedType === "BISCOITO MEDICAMENTOSO") return <cookie color="#9e9e9e" />;
+  if (normalizedType === "ENVELOPE") return <Package color="#ff9800" />;
   
   return <Inventory2 color="disabled" />;
 };
