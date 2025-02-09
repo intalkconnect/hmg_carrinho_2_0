@@ -430,14 +430,14 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           stack: error.stack
         });
         
-        if (currentVerificationCount >= 5) {
+        if (currentVerificationCount >= 10) {
           clearInterval(paymentIntervalRef.current);
           setLoading(false);
         }
       }
-    }, 30000);
+    }, 10000);
 
-    console.log('Intervalo de verificação configurado para 30 segundos');
+    console.log('Intervalo de verificação configurado para 10 segundos');
 
   } catch (error) {
     console.error('Erro no processo PIX:', {
