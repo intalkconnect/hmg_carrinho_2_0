@@ -253,16 +253,18 @@ const Checkout = () => {
 
 
     return (
-        <Box
-            sx={{
-                bgcolor: '#f4f8fa',
-                minHeight: '100vh',
-                margin: 0,
-                padding: 0,
-                width: '100vw',
-                overflowX: 'hidden',
-            }}
-        >
+<Box
+    sx={{
+        bgcolor: '#f4f8fa',
+        minHeight: '100vh',
+        margin: 0,
+        padding: 0,
+        width: '100vw',
+        overflowX: 'hidden',
+        display: 'flex',
+        flexDirection: 'column'
+    }}
+>
             <AppBar
                 id="header" // Adicionado ID para facilitar a captura
                 position="static"
@@ -445,6 +447,62 @@ const Checkout = () => {
                     </Grid>
                 </Grid>
             </Container>
+// Adicione antes do último </Box> no return do componente Checkout:
+
+<Box 
+    component="footer" 
+    sx={{
+        bgcolor: '#f8f8f8',
+        borderTop: '1px solid #e0e0e0',
+        py: 3,
+        px: 2,
+        mt: 'auto'
+    }}
+>
+    <Container maxWidth="lg">
+        <Typography 
+            variant="body2" 
+            align="center" 
+            sx={{ 
+                color: '#666666',
+                fontSize: '0.75rem',
+                lineHeight: 1.6
+            }}
+        >
+            Nature Derme Pharmácia de manipulação Ltda
+            <br />
+            CNPJ: 25.391.756/0001-30 | Farmacêutico Responsável: Leonardo Tomaz Alves | CRF: 24992
+        </Typography>
+        
+        <Typography 
+            variant="body2" 
+            align="center" 
+            sx={{ 
+                color: '#666666',
+                fontSize: '0.75rem',
+                mt: 2,
+                fontStyle: 'italic'
+            }}
+        >
+            As informações contidas neste site não devem ser usadas para automedicação e não substituem, 
+            em hipótese alguma, as orientações dadas pelo profissional da área médica. 
+            Somente o médico está apto a diagnosticar qualquer problema de saúde e prescrever o tratamento adequado.
+        </Typography>
+        
+        <Typography 
+            variant="body2" 
+            align="center" 
+            sx={{ 
+                color: '#666666',
+                fontSize: '0.75rem',
+                mt: 2,
+                fontWeight: 'medium'
+            }}
+        >
+            Ao persistirem os sintomas, um médico deverá ser consultado.
+        </Typography>
+    </Container>
+</Box>
 
             {isModalVisible && (
                 <Modal
