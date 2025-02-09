@@ -718,7 +718,6 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       if (response.ok && data.status === 'CONFIRMED') {
         console.log("Pagamento confirmado!");
         setPaymentStatus('PAID');
-        setSnackbar({ open: true, message: 'Pagamento confirmado!', severity: 'success' });
         finalizeCheckout();
         // Limpar dados sensíveis após confirmação
         clearSensitiveData();
