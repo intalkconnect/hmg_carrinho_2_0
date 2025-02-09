@@ -303,6 +303,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           'Content-Type': 'application/json',
         },
       });
+      console.log(response.json());
       return await response.json();
     } catch (error) {
       console.error("Erro ao verificar status do pagamento:", error);
