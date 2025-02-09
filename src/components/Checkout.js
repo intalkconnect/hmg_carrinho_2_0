@@ -326,7 +326,7 @@ useEffect(() => {
                                     {isStep1Completed ? (
                                         <CircleCheckBig color= '#00695c' />
                                     ) : (
-                                        <CircleUser sx={{ color: '#00695c' }} />
+                                        <CircleUser color= '#00695c' />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Dados Pessoais
@@ -360,7 +360,7 @@ useEffect(() => {
                                     {isStep2Completed ? (
                                         <CircleCheckBig color= '#00695c' />
                                     ) : (
-                                        <Package sx={{ color: '#00695c' }} />
+                                        <Package color= '#00695c' />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Entrega ou Retirada
@@ -392,7 +392,7 @@ useEffect(() => {
                                 sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <CreditCard sx={{ color: '#00695c' }} />
+                                    <CreditCard color= '#00695c' />
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Formas de Pagamento
                                     </Typography>
