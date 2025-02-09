@@ -326,7 +326,7 @@ useEffect(() => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep1Completed ? (
-                                        <CircleCheckBig color= '#81c784' />
+                                        <CircleCheckBig color= '#06db6d' />
                                     ) : (
                                         <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
                                     )}
@@ -360,7 +360,7 @@ useEffect(() => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep2Completed ? (
-                                        <CircleCheckBig color= '#81c784' />
+                                        <CircleCheckBig color= '#06db6d' />
                                     ) : (
                                         <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
                                     )}
