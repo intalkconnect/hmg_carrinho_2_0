@@ -17,9 +17,7 @@ import {
     Container,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { CircleCheckBig } from "lucide-react";
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import { CircleCheckBig, CircleUser, Package, CreditCard } from "lucide-react";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'; // Importa o ícone
 
 import { Snackbar, Alert } from '@mui/material';
@@ -328,7 +326,7 @@ useEffect(() => {
                                     {isStep1Completed ? (
                                         <CircleCheckBig color= '#00695c' />
                                     ) : (
-                                        <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
+                                        <CircleUser sx={{ color: '#00695c' }} />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Dados Pessoais
@@ -362,7 +360,7 @@ useEffect(() => {
                                     {isStep2Completed ? (
                                         <CircleCheckBig color= '#00695c' />
                                     ) : (
-                                        <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
+                                        <Package sx={{ color: '#00695c' }} />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Entrega ou Retirada
@@ -394,7 +392,7 @@ useEffect(() => {
                                 sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <RadioButtonUncheckedIcon sx={{ color: '#00695c' }} />
+                                    <CreditCard sx={{ color: '#00695c' }} />
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Formas de Pagamento
                                     </Typography>
