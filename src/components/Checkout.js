@@ -319,18 +319,20 @@ const Checkout = () => {
     }}
 >
     <AccordionSummary
-        expandIcon={
-            <Box
-                sx={{
-                    transition: 'transform 0.3s ease',
-                    transform: expanded === 'step1' ? 'rotate(180deg)' : 'rotate(0deg)',
-                }}
-            >
+    expandIcon={
+        <div style={{
+            transform: expanded === 'step1' ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease'
+        }}>
+            {expanded === 'step1' ? (
+                <CircleChevronUp color="#00695c" />
+            ) : (
                 <CircleChevronDown color="#00695c" />
-            </Box>
-        }
-        sx={{ bgcolor: expanded === 'step1' ? '#e8f5e9' : '#ffffff' }}
-    >
+            )}
+        </div>
+    }
+    sx={{ bgcolor: expanded === 'step1' ? '#e8f5e9' : '#ffffff' }}
+>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {isStep1Completed ? (
                 <CircleCheckBig color="#00695c" />
@@ -362,18 +364,20 @@ const Checkout = () => {
     }}
 >
     <AccordionSummary
-        expandIcon={
-            <Box
-                sx={{
-                    transition: 'transform 0.3s ease',
-                    transform: expanded === 'step2' ? 'rotate(180deg)' : 'rotate(0deg)',
-                }}
-            >
+    expandIcon={
+        <div style={{
+            transform: expanded === 'step2' ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease'
+        }}>
+            {expanded === 'step2' ? (
+                <CircleChevronUp color="#00695c" />
+            ) : (
                 <CircleChevronDown color="#00695c" />
-            </Box>
-        }
-        sx={{ bgcolor: expanded === 'step2' ? '#e8f5e9' : '#ffffff' }}
-    >
+            )}
+        </div>
+    }
+    sx={{ bgcolor: expanded === 'step2' ? '#e8f5e9' : '#ffffff' }}
+>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {isStep2Completed ? (
                 <CircleCheckBig color="#00695c" />
@@ -406,18 +410,20 @@ const Checkout = () => {
     }}
 >
     <AccordionSummary
-        expandIcon={
-            <Box
-                sx={{
-                    transition: 'transform 0.3s ease',
-                    transform: expanded === 'step3' ? 'rotate(180deg)' : 'rotate(0deg)',
-                }}
-            >
+    expandIcon={
+        <div style={{
+            transform: expanded === 'step3' ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease'
+        }}>
+            {expanded === 'step3' ? (
+                <CircleChevronUp color="#00695c" />
+            ) : (
                 <CircleChevronDown color="#00695c" />
-            </Box>
-        }
-        sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
-    >
+            )}
+        </div>
+    }
+    sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
+>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <CreditCard color="#00695c" />
             <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
