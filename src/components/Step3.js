@@ -66,7 +66,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
   }, []);
 
   const ASaasToken = '$aact_MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OjljNjY3NzAzLWVlMzMtNDNlZS1iMDc4LTBhNzc1YjNmM2EwMDo6JGFhY2hfNDRjYzJlNDAtMmM4MC00MmJjLWEwN2MtOWJlNDE5MmEwYTQ5';
-  const baseURL = 'https://endpoints-checkout.rzyewu.easypanel.host';
+  const baseURL = 'https://api-sandbox.asaas.com/v3';
 
   const handleSnackbarClose = () => setSnackbar(prev => ({ ...prev, open: false }));
 
@@ -260,7 +260,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
 
   const deletePixCharge = async (pixId) => {
     try {
-      await fetch(`${baseURL}/payments/deletePix?id=${pixId}`, {
+      await fetch(`${baseURL}/payments/${pixId}`, {
         method: 'DELETE',
         headers: {
           accept: 'application/json',
@@ -274,7 +274,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
 
   const fetchPixQrCode = async (paymentId) => {
     try {
-      const response = await fetch(`${baseURL}/payments/byPixQrCode?pixQrCode=${paymentId}`, {
+      const response = await fetch(`${baseURL}/payments/${paymentId}/pixQrCode`, {
         headers: {
           accept: 'application/json',
           access_token: ASaasToken,
@@ -297,7 +297,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     }
 
     try {
-      const response = await fetch(`${baseURL}/payments/byStatus?status=${paymentId}`, {
+      const response = await fetch(`${baseURL}/payments/${paymentId}/status`, {
         headers: {
           accept: 'application/json',
           access_token: ASaasToken,
