@@ -447,39 +447,43 @@ const Checkout = () => {
                     </Grid>
                 </Grid>
             </Container>
+// Atualize o footer para:
+
 <Box 
     component="footer" 
     sx={{
         bgcolor: '#f8f8f8',
         borderTop: '1px solid #e0e0e0',
-        py: 3,
+        py: 4,
         px: 2,
         mt: 'auto'
     }}
 >
     <Container maxWidth="lg">
         <Typography 
-            variant="body2" 
+            variant="body1"
             align="center" 
             sx={{ 
                 color: '#666666',
-                fontSize: '0.75rem',
-                lineHeight: 1.6
+                fontSize: '0.9rem',
+                lineHeight: 1.8,
+                fontWeight: 500
             }}
         >
-            Nature Derme Pharmácia de manipulação Ltda
+            LANTANA LTDA
             <br />
-            CNPJ: 25.391.756/0001-30 | Farmacêutico Responsável: Leonardo Tomaz Alves | CRF: 24992
+            CNPJ: 03.915.693/0001-30 | Farmacêutica Responsável: Andrea Kamizaki Lima | CRF: 12045
         </Typography>
         
         <Typography 
-            variant="body2" 
+            variant="body1"
             align="center" 
             sx={{ 
                 color: '#666666',
-                fontSize: '0.75rem',
-                mt: 2,
-                fontStyle: 'italic'
+                fontSize: '0.9rem',
+                mt: 3,
+                fontStyle: 'italic',
+                lineHeight: 1.8
             }}
         >
             As informações contidas neste site não devem ser usadas para automedicação e não substituem, 
@@ -488,13 +492,14 @@ const Checkout = () => {
         </Typography>
         
         <Typography 
-            variant="body2" 
+            variant="body1"
             align="center" 
             sx={{ 
                 color: '#666666',
-                fontSize: '0.75rem',
-                mt: 2,
-                fontWeight: 'medium'
+                fontSize: '0.9rem',
+                mt: 3,
+                fontWeight: 500,
+                lineHeight: 1.8
             }}
         >
             Ao persistirem os sintomas, um médico deverá ser consultado.
