@@ -65,8 +65,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     };
   }, []);
 
-  const ASaasToken = '$aact_MzkwODA2MWY2OGM3MWRlMDU2NWM3MzJlNzZmNGZhZGY6OjljNjY3NzAzLWVlMzMtNDNlZS1iMDc4LTBhNzc1YjNmM2EwMDo6JGFhY2hfNDRjYzJlNDAtMmM4MC00MmJjLWEwN2MtOWJlNDE5MmEwYTQ5';
-  const baseURL = 'https://api-sandbox.asaas.com/v3';
+  const baseURL = 'https://endpoints-proxyasaas.rzyewu.easypanel.host/asaas';
 
   const handleSnackbarClose = () => setSnackbar(prev => ({ ...prev, open: false }));
 
@@ -84,7 +83,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       const response = await fetch(`${baseURL}/customers?cpfCnpj=${formData.cpf}`, {
         headers: {
           accept: 'application/json',
-          access_token: ASaasToken,
+          //access_token: ASaasToken,
         },
       });
       const data = await response.json();
@@ -101,8 +100,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
         method: 'POST',
         headers: {
           accept: 'application/json',
-          'Content-Type': 'application/json',
-          access_token: ASaasToken,
+        //access_token: ASaasToken,
         },
         body: JSON.stringify({
           name: formData.nomeCompleto,
@@ -239,8 +237,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
         method: 'POST',
         headers: {
           accept: 'application/json',
-          'Content-Type': 'application/json',
-          access_token: ASaasToken,
+        //access_token: ASaasToken,
         },
         body: JSON.stringify({
           billingType: 'PIX',
@@ -277,7 +274,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       const response = await fetch(`${baseURL}/payments/${paymentId}/pixQrCode`, {
         headers: {
           accept: 'application/json',
-          access_token: ASaasToken,
+          //access_token: ASaasToken,
         },
       });
       return await response.json();
@@ -300,7 +297,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       const response = await fetch(`${baseURL}/payments/${paymentId}/status`, {
         headers: {
           accept: 'application/json',
-          access_token: ASaasToken,
+          //access_token: ASaasToken,
         },
       });
       return await response.json();
@@ -630,8 +627,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
         method: 'POST',
         headers: {
           accept: 'application/json',
-          'content-type': 'application/json',
-          access_token: ASaasToken,
+          //access_token: ASaasToken,
         },
         body: JSON.stringify(payload),
       });
