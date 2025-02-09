@@ -17,7 +17,7 @@ import {
     Container,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { CircleCheckBig, CircleUser, Package, CreditCard } from "lucide-react";
+import { CircleCheckBig, CircleUser, Package, CreditCard, CircleChevronDown, CircleChevronUp } from "lucide-react";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'; // Importa o ícone
 
 import { Snackbar, Alert } from '@mui/material';
@@ -78,9 +78,9 @@ const Checkout = () => {
         };
     }, []);
 
-useEffect(() => {
-    setTotalValue(calculateTotalValue(orcamentos, formData.frete));
-}, [orcamentos, formData.frete]);
+    useEffect(() => {
+        setTotalValue(calculateTotalValue(orcamentos, formData.frete));
+    }, [orcamentos, formData.frete]);
 
     if (!status) {
         return (
@@ -206,9 +206,9 @@ useEffect(() => {
             setExpanded('step2');
         } else {
             handleSnackbarOpen(setSnackbar, {
-            message: 'Por favor, preencha todos os campos obrigatórios.',
-            severity: 'warning',
-        });
+                message: 'Por favor, preencha todos os campos obrigatórios.',
+                severity: 'warning',
+            });
 
         }
     };
@@ -319,14 +319,20 @@ useEffect(() => {
                             }}
                         >
                             <AccordionSummary
-                                expandIcon={<ExpandMoreIcon sx={{ color: '#00695c' }} />}
+                                expandIcon={
+                                    expanded === 'step1' ? (
+                                        <CircleChevronUp color="#00695c" />
+                                    ) : (
+                                        <CircleChevronDown color="#00695c" />
+                                    )
+                                }
                                 sx={{ bgcolor: expanded === 'step1' ? '#e8f5e9' : '#ffffff' }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep1Completed ? (
-                                        <CircleCheckBig color= '#00695c' />
+                                        <CircleCheckBig color='#00695c' />
                                     ) : (
-                                        <CircleUser color= '#00695c' />
+                                        <CircleUser color='#00695c' />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Dados Pessoais
@@ -353,14 +359,20 @@ useEffect(() => {
                             }}
                         >
                             <AccordionSummary
-                                expandIcon={<ExpandMoreIcon sx={{ color: '#00695c' }} />}
+                                expandIcon={
+                                    expanded === 'step1' ? (
+                                        <CircleChevronUp color="#00695c" />
+                                    ) : (
+                                        <CircleChevronDown color="#00695c" />
+                                    )
+                                }
                                 sx={{ bgcolor: expanded === 'step2' ? '#e8f5e9' : '#ffffff' }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep2Completed ? (
-                                        <CircleCheckBig color= '#00695c' />
+                                        <CircleCheckBig color='#00695c' />
                                     ) : (
-                                        <Package color= '#00695c' />
+                                        <Package color='#00695c' />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Entrega ou Retirada
@@ -388,11 +400,17 @@ useEffect(() => {
                             }}
                         >
                             <AccordionSummary
-                                expandIcon={<ExpandMoreIcon sx={{ color: '#00695c' }} />}
+                                expandIcon={
+                                    expanded === 'step1' ? (
+                                        <CircleChevronUp color="#00695c" />
+                                    ) : (
+                                        <CircleChevronDown color="#00695c" />
+                                    )
+                                }
                                 sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <CreditCard color= '#00695c' />
+                                    <CreditCard color='#00695c' />
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
                                         Formas de Pagamento
                                     </Typography>
