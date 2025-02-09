@@ -89,7 +89,7 @@ const Modal = ({ isVisible, onClose, items }) => {
                                 color: 'text.primary',
                             }}
                         >
-                            Qtnd
+                            Qtde
                         </Typography>
                     </Stack>
 
