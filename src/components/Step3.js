@@ -322,71 +322,145 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
   };
 
   const handlePixPayment = async () => {
-    setLoading(true);
-    setVerificationCount(0);
-    setDisableOptions(true);
+  console.log('=== INICIANDO PROCESSO DE PAGAMENTO PIX ===');
+  console.log('Estado inicial:', {
+    loading: true,
+    verificationCount: 0,
+    disableOptions: true,
+    formData: formData
+  });
 
-    try {
-      let customer = await fetchCustomer();
-      if (!customer) {
-        customer = await createCustomer();
+  setLoading(true);
+  setVerificationCount(0);
+  setDisableOptions(true);
+
+  try {
+    console.log('Buscando cliente existente com CPF:', formData.cpf);
+    let customer = await fetchCustomer();
+    console.log('Resultado da busca do cliente:', customer);
+
+    if (!customer) {
+      console.log('Cliente não encontrado, criando novo cliente com dados:', {
+        nome: formData.nomeCompleto,
+        cpf: formData.cpf
+      });
+      customer = await createCustomer();
+      console.log('Novo cliente criado:', customer);
+    }
+
+    console.log('Criando cobrança PIX para cliente:', {
+      customerId: customer.id,
+      valor: totalValue
+    });
+    const charge = await createPixCharge(customer.id);
+    console.log('Cobrança PIX criada:', charge);
+
+    console.log('Buscando QR Code para cobrança:', charge.id);
+    const pixData = await fetchPixQrCode(charge.id);
+    console.log('Dados do PIX recebidos:', {
+      temQRCode: !!pixData?.encodedImage,
+      temPayload: !!pixData?.payload,
+      pixData: pixData
+    });
+
+    console.log('Atualizando estado com dados do PIX');
+    setQrcode(pixData?.encodedImage || '');
+    setPixCopyCode(pixData?.payload || '');
+    setIsQrCodeUpdated(true);
+
+    let currentVerificationCount = 0;
+    console.log('Iniciando intervalo de verificação de pagamento');
+
+    paymentIntervalRef.current = setInterval(async () => {
+      currentVerificationCount++;
+      console.log(`=== VERIFICAÇÃO ${currentVerificationCount}/5 ===`);
+      setVerificationCount(currentVerificationCount);
+
+      if (currentVerificationCount > 4) {
+        console.log('Limite de verificações atingido');
+        clearInterval(paymentIntervalRef.current);
+        
+        if (activePixId.current) {
+          console.log('Deletando cobrança PIX:', activePixId.current);
+          await deletePixCharge(activePixId.current);
+          activePixId.current = null;
+        }
+
+        console.log('Resetando estado do QR Code');
+        setQrcode('');
+        setPixCopyCode('');
+        setIsQrCodeUpdated(false);
+        
+        console.log('Exibindo mensagem de limite atingido');
+        setSnackbar({
+          open: true,
+          message: 'Limite de verificações atingido. Atualize o QR Code.',
+          severity: 'warning',
+        });
+        
+        setLoading(false);
+        console.log('Processo finalizado por timeout');
+        return;
       }
 
-      const charge = await createPixCharge(customer.id);
-      const pixData = await fetchPixQrCode(charge.id);
+      try {
+        console.log(`Verificando status do pagamento: ${charge.id}`);
+        const paymentStatus = await checkPaymentStatus(charge.id);
+        console.log('Status atual do pagamento:', paymentStatus);
 
-      setQrcode(pixData?.encodedImage || '');
-      setPixCopyCode(pixData?.payload || '');
-      setIsQrCodeUpdated(true);
-
-      let currentVerificationCount = 0;
-
-      paymentIntervalRef.current = setInterval(async () => {
-        currentVerificationCount++;
-        setVerificationCount(currentVerificationCount);
-
-        if (currentVerificationCount > 4) {
+        if (paymentStatus?.status === 'RECEIVED') {
+          console.log('=== PAGAMENTO CONFIRMADO ===');
           clearInterval(paymentIntervalRef.current);
-          if (activePixId.current) {
-            await deletePixCharge(activePixId.current);
-            activePixId.current = null;
-          }
-          setQrcode('');
-          setPixCopyCode('');
-          setIsQrCodeUpdated(false);
-          setSnackbar({
-            open: true,
-            message: 'Limite de verificações atingido. Atualize o QR Code.',
-            severity: 'warning',
-          });
+          console.log('Intervalo de verificação limpo');
+          
+          setPaymentStatus('PAID');
+          console.log('Estado de pagamento atualizado para PAID');
+          
+          finalizeCheckout();
+          console.log('Checkout finalizado');
+          
+          handleRedirect();
+          console.log('Redirecionamento iniciado');
+          
           setLoading(false);
-          return;
+        } else {
+          console.log(`Pagamento ainda não confirmado. Status: ${paymentStatus?.status}`);
         }
+      } catch (error) {
+        console.error('Erro durante verificação de status:', {
+          erro: error.message,
+          stack: error.stack
+        });
+      }
+    }, 30000);
 
-        try {
-          const paymentStatus = await checkPaymentStatus(charge.id);
+    console.log('Intervalo de verificação configurado para 30 segundos');
 
-          if (paymentStatus?.status === 'RECEIVED') {
-            clearInterval(paymentIntervalRef.current);
-            setPaymentStatus('PAID');
-            finalizeCheckout();
-            handleRedirect();
-            setLoading(false);
-          }
-
-        } catch (error) {
-          console.log('Status recebido:', paymentStatus);
-          console.error("Erro na verificação:", error);
-        }
-      }, 30000);
-    } catch (error) {
-      console.error("Erro no processo PIX:", error);
-      setSnackbar({ open: true, message: 'Erro ao processar PIX.', severity: 'error' });
-    } finally {
-      setLoading(false);
-      setDisableOptions(false);
-    }
-  };
+  } catch (error) {
+    console.error('Erro no processo PIX:', {
+      mensagem: error.message,
+      stack: error.stack,
+      erro: error
+    });
+    
+    setSnackbar({
+      open: true,
+      message: 'Erro ao processar PIX.',
+      severity: 'error'
+    });
+    console.log('Mensagem de erro exibida ao usuário');
+    
+  } finally {
+    console.log('=== FINALIZANDO PROCESSO PIX ===');
+    console.log('Estado final:', {
+      loading: false,
+      disableOptions: false
+    });
+    
+    setLoading(false);
+    setDisableOptions(false);
+  }
+};
 
   const handleFormChange = (event) => {
     const { value } = event.target;
