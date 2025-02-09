@@ -287,7 +287,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
   };
 
   const checkPaymentStatus = async (paymentId) => {
-    console.log("forma de pagamento:" , formaPagamentoRef.current);
+    console.log("forma de pagamento:", formaPagamentoRef.current);
     if (formaPagamentoRef.current !== 'pix') {
       if (activePixId.current) {
         await deletePixCharge(activePixId.current);
@@ -299,12 +299,13 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     try {
       const response = await fetch(`${baseURL}/payments/${paymentId}/status`, {
         headers: {
-         'accept': 'application/json',
+          'accept': 'application/json',
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.json());
-      return await response.json();
+      const data = await response.json();
+      console.log("Status do pagamento:", data);
+      return data;
     } catch (error) {
       console.error("Erro ao verificar status do pagamento:", error);
       throw error;
@@ -464,9 +465,10 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
   }
 };
 
-  const handleFormChange = (event) => {
+   const handleFormChange = (event) => {
     const { value } = event.target;
     setFormaPagamento(value);
+    formaPagamentoRef.current = value; // Atualiza a ref
     handleInputChange({ target: { name: 'formaPagamento', value } });
 
     if (formaPagamento === 'pix' && value === 'cartaoCredito') {
