@@ -10,7 +10,7 @@ import {
 import { AddCircle, Delete } from '@mui/icons-material';
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
-import { Pill, Syringe, FlaskConical, Package, LocalPharmacy, Inventory2 } from "lucide-react";
+import { Pill, FlaskConical, Package, Inventory2, milk } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
@@ -51,7 +51,7 @@ const getIconByType = (tipo) => {
 
   if (normalizedType === "CAPSULA") return <Pill color="#00796b" />;
   if (["CREME", "LOCAO", "XAMPU", "GEL", "POMADA"].includes(normalizedType)) {
-    return <LocalPharmacy color="secondary" />;
+    return <milk color="secondary" />;
   }
   if (["XAROPE", "SOLUCAO ORAL"].includes(normalizedType)) {
     return <FlaskConical color="#673ab7" />;
