@@ -82,7 +82,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     try {
       const response = await fetch(`${baseURL}/customers?cpfCnpj=${formData.cpf}`, {
         headers: {
-          accept: 'application/json',
+          'accept': 'application/json',
+          'Content-Type': 'application/json',
           //access_token: ASaasToken,
         },
       });
@@ -99,13 +100,14 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       const response = await fetch(`${baseURL}/customers`, {
         method: 'POST',
         headers: {
-          accept: 'application/json',
+          'accept': 'application/json',
+          'Content-Type': 'application/json',
         //access_token: ASaasToken,
         },
-        body: {
+        body: JSON.stringify({
           name: formData.nomeCompleto,
           cpfCnpj: formData.cpf,
-        },
+        }),
       });
       return await response.json();
     } catch (error) {
@@ -236,15 +238,15 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       const response = await fetch(`${baseURL}/payments`, {
         method: 'POST',
         headers: {
-          accept: 'application/json',
-        //access_token: ASaasToken,
+          'accept': 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: {
+        body: JSON.stringify({
           billingType: 'PIX',
           customer: customerId,
           value: parseFloat(totalValue).toFixed(2),
           dueDate: dueDate.toISOString().split('T')[0],
-        },
+        }),
       });
       const data = await response.json();
       activePixId.current = data.id;
@@ -260,8 +262,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       await fetch(`${baseURL}/payments/${pixId}`, {
         method: 'DELETE',
         headers: {
-          accept: 'application/json',
-        //access_token: ASaasToken,
+         'accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
     } catch (error) {
@@ -273,8 +275,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     try {
       const response = await fetch(`${baseURL}/payments/${paymentId}/pixQrCode`, {
         headers: {
-          accept: 'application/json',
-          //access_token: ASaasToken,
+          'accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
       return await response.json();
@@ -296,8 +298,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     try {
       const response = await fetch(`${baseURL}/payments/${paymentId}/status`, {
         headers: {
-          accept: 'application/json',
-          //access_token: ASaasToken,
+         'accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
       return await response.json();
