@@ -376,39 +376,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       console.log(`=== VERIFICAÇÃO ${currentVerificationCount}/5 ===`);
       setVerificationCount(currentVerificationCount);
 
-      if (currentVerificationCount > 4) {
-        console.log('Limite de verificações atingido');
-        clearInterval(paymentIntervalRef.current);
-        
-        if (activePixId.current) {
-          console.log('Deletando cobrança PIX:', activePixId.current);
-          await deletePixCharge(activePixId.current);
-          activePixId.current = null;
-        }
-
-        console.log('Resetando estado do QR Code');
-        setQrcode('');
-        setPixCopyCode('');
-        setIsQrCodeUpdated(false);
-        
-        console.log('Exibindo mensagem de limite atingido');
-        setSnackbar({
-          open: true,
-          message: 'Limite de verificações atingido. Atualize o QR Code.',
-          severity: 'warning',
-        });
-        
-        setLoading(false);
-        console.log('Processo finalizado por timeout');
-        return;
-      }
-
       try {
         console.log(`Verificando status do pagamento: ${charge.id}`);
         const paymentStatus = await checkPaymentStatus(charge.id);
         console.log('Status atual do pagamento:', paymentStatus);
 
-        if (paymentStatus?.status === 'RECEIVED') {
+        if (paymentStatus?.status === 'RECEIVED' || paymentStatus?.status === 'CONFIRMED') {
           console.log('=== PAGAMENTO CONFIRMADO ===');
           clearInterval(paymentIntervalRef.current);
           console.log('Intervalo de verificação limpo');
@@ -425,12 +398,39 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
           setLoading(false);
         } else {
           console.log(`Pagamento ainda não confirmado. Status: ${paymentStatus?.status}`);
+          
+          // Só verifica o limite de tentativas após ter o status
+          if (currentVerificationCount >= 5) {
+            console.log('Limite de verificações atingido');
+            clearInterval(paymentIntervalRef.current);
+            
+            console.log('Resetando estado do QR Code');
+            setQrcode('');
+            setPixCopyCode('');
+            setIsQrCodeUpdated(false);
+            
+            console.log('Exibindo mensagem de limite atingido');
+            setSnackbar({
+              open: true,
+              message: 'Limite de verificações atingido. Atualize o QR Code.',
+              severity: 'warning',
+            });
+            
+            // Não deleta o PIX automaticamente, permite que o usuário tente novamente
+            console.log('Processo finalizado por timeout, PIX mantido para nova tentativa');
+            setLoading(false);
+          }
         }
       } catch (error) {
         console.error('Erro durante verificação de status:', {
           erro: error.message,
           stack: error.stack
         });
+        
+        if (currentVerificationCount >= 5) {
+          clearInterval(paymentIntervalRef.current);
+          setLoading(false);
+        }
       }
     }, 30000);
 
