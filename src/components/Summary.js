@@ -9,9 +9,11 @@ import {
 } from '@mui/material';
 import { AddCircle, Delete } from '@mui/icons-material';
 import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan, Cookie, ShoppingCart } from "lucide-react";
-import { primaryColor } from './utils/colors';
+
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
+
+const primary = process.env.REACT_APP_PRIMARY_COLOR
 
 const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -90,12 +92,12 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                 >
                     <ShoppingCart
                         size={24}
-                        color="#00BFBE"
+                        color= primary
                     />
                     <Typography
                         variant="h6"
                         sx={{
-                            color: '#00BFBE',
+                            color: primary,
                             fontWeight: 600,
                             fontSize: '1.1rem'
                         }}
@@ -150,7 +152,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                     {item.orcamentoItens.length > 1 && (
                                         <IconButton
                                             size="small"
-                                            sx={{ color: '#00BFBE' }}
+                                            sx={{ color: primary }}
                                             onClick={() => handleOpenModal(item.orcamentoItens)}
                                         >
                                             <FileSearch />
@@ -179,7 +181,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                 >
                                     <IconButton
                                         size="small"
-                                        sx={{ color: '#00BFBE' }}
+                                        sx={{ color: primary }}
                                         onClick={() => handleDecrement(item)}
                                     >
                                         <Delete />
@@ -189,7 +191,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                     </Typography>
                                     <IconButton
                                         size="small"
-                                        sx={{ color: '#00BFBE' }}
+                                        sx={{ color: primary }}
                                         onClick={() => handleIncrement(item)}
                                     >
                                         <AddCircle />
@@ -202,7 +204,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                 <Typography
                                     variant="body1"
                                     fontWeight="bold"
-                                    sx={{ color: '#00BFBE' }}
+                                    sx={{ color: primary }}
                                 >
                                     R$ {ajustaValor(item.orc_valor_liquido * item.orc_qt_potes)}
                                 </Typography>
@@ -216,7 +218,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                         <Typography variant="body2" color="#666666">
                             Frete:
                         </Typography>
-                        <Typography variant="body1" fontWeight="bold" sx={{ color: '#00BFBE' }}>
+                        <Typography variant="body1" fontWeight="bold" sx={{ color: primary }}>
                             R$ {ajustaValor(parseFloat(frete))}
                         </Typography>
                     </Box>
@@ -226,7 +228,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                         <Typography variant="body2" color="#666666">
                             Total:
                         </Typography>
-                        <Typography variant="h5" fontWeight="bold" sx={{ color: '#00BFBE' }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{ color: primary }}>
                             R$ {ajustaValor(parseFloat(totalValue))}
                         </Typography>
                     </Box>
