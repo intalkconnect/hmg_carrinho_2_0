@@ -904,7 +904,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
       gap: 1.5, // Gap reduzido
       justifyContent: 'space-evenly', // Alinhamento equilibrado
       alignItems: 'center',
-      mt: 1,
+      mt: 2,
     }}
           >
             <FormControlLabel
