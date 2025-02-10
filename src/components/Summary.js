@@ -49,16 +49,16 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
 
         const normalizedType = normalizeText(tipo || '');
 
-        if (normalizedType === "CAPSULA") return <Pill color="#00796b" />;
+        if (normalizedType === "CAPSULA") return <Pill color= {primary} />;
         if (["CREME", "LOCAO", "XAMPU", "GEL", "POMADA"].includes(normalizedType)) {
-            return <Milk color="secondary" />;
+            return <Milk color= {primary} />;
         }
         if (["XAROPE", "SOLUCAO ORAL"].includes(normalizedType)) {
-            return <FlaskConical color="#673ab7" />;
+            return <FlaskConical color= {primary} />;
         }
-        if (normalizedType === "FILTRO SOLAR") return <SprayCan color="#9e9e9e" />;
-        if (normalizedType === "BISCOITO MEDICAMENTOSO") return <Cookie color="#9e9e9e" />;
-        if (normalizedType === "ENVELOPE") return <Package color="#ff9800" />;
+        if (normalizedType === "FILTRO SOLAR") return <SprayCan color= {primary} />;
+        if (normalizedType === "BISCOITO MEDICAMENTOSO") return <Cookie color= {primary} />;
+        if (normalizedType === "ENVELOPE") return <Package color= {primary} />;
 
         return <Archive color="disabled" />;
     };
