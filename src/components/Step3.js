@@ -899,10 +899,13 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
             value={formaPagamento}
             onChange={handleFormChange}
             sx={{
-              flexDirection: { xs: 'column', sm: 'row' },
-              justifyContent: 'center',
-              gap: 2,
-            }}
+      display: 'flex',
+      flexDirection: 'row',
+      gap: 1.5, // Gap reduzido
+      justifyContent: 'space-evenly', // Alinhamento equilibrado
+      alignItems: 'center',
+      mt: 1,
+    }}
           >
             <FormControlLabel
               value="cartaoCredito"
