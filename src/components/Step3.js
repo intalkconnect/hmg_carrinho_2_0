@@ -912,12 +912,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               control={
                 <Radio
                   sx={{
-                    color: '#00695c',
-                    '&.Mui-checked': { color: '#00695c' },
+                    color: '#00BFBE',
+                    '&.Mui-checked': { color: '#00BFBE' },
                     '&:hover': {
                     backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
                     },
-                    '&.Mui-checked': { color: '#00695c' }
+                    '&.Mui-checked': { color: '#00BFBE' }
                     }}
                   disabled={disableOptions}
                 />
@@ -929,12 +929,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               control={
                 <Radio
                   sx={{
-                    color: '#00695c',
-                    '&.Mui-checked': { color: '#00695c' },
+                    color: '#00BFBE',
+                    '&.Mui-checked': { color: '#00BFBE' },
                     '&:hover': {
                     backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
                     },
-                    '&.Mui-checked': { color: '#00695c' }
+                    '&.Mui-checked': { color: '#00BFBE' }
                   }}
                 />
               }
@@ -1053,8 +1053,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               sx={{
                 alignSelf: 'flex-end',
                 marginTop: 2,
-                borderColor: '#00695c', // Define a cor da borda
-                color: '#00695c', // Define a cor do texto
+                borderColor: '#00BFBE', // Define a cor da borda
+                color: '#00BFBE', // Define a cor do texto
                 ':hover': {
                   borderColor: '#004d40', // Cor da borda no hover
                   backgroundColor: 'transparent', // Fundo transparente no hover
@@ -1098,7 +1098,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                     <CircularProgress
                       size={80}
                       sx={{
-                        color: '#00695c',
+                        color: '#00BFBE',
                         mb: 3
                       }}
                     />
@@ -1144,8 +1144,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                   sx={{
                     alignSelf: 'flex-end',
                     marginTop: 2,
-                    borderColor: '#00695c', // Define a cor da borda
-                    color: '#00695c', // Define a cor do texto
+                    borderColor: '#00BFBE', // Define a cor da borda
+                    color: '#00BFBE', // Define a cor do texto
                     ':hover': {
                       borderColor: '#004d40', // Cor da borda no hover
                       backgroundColor: 'transparent', // Fundo transparente no hover
@@ -1162,7 +1162,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               <Box
                 sx={{
                   textAlign: 'center',
-                  border: '1px solid #00695c',
+                  border: '1px solid #00BFBE',
                   borderRadius: 2,
                   p: 3,
                 }}
@@ -1187,8 +1187,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                   sx={{
                     alignSelf: 'flex-end',
                     marginTop: 2,
-                    borderColor: '#00695c', // Define a cor da borda
-                    color: '#00695c', // Define a cor do texto
+                    borderColor: '#00BFBE', // Define a cor da borda
+                    color: '#00BFBE', // Define a cor do texto
                     ':hover': {
                       borderColor: '#004d40', // Cor da borda no hover
                       backgroundColor: 'transparent', // Fundo transparente no hover
