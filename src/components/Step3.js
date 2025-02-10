@@ -17,6 +17,8 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+const primary = process.env.REACT_APP_PRIMARY_COLOR
+
 const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) => {
   const [formaPagamento, setFormaPagamento] = useState('');
   const formaPagamentoRef = useRef(formaPagamento);
