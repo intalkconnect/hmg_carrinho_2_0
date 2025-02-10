@@ -150,7 +150,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                     {item.orcamentoItens.length > 1 && (
                                         <IconButton
                                             size="small"
-                                            sx={{ color: '#00695c' }}
+                                            sx={{ color: '#00BFBE' }}
                                             onClick={() => handleOpenModal(item.orcamentoItens)}
                                         >
                                             <FileSearch />
@@ -179,7 +179,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                 >
                                     <IconButton
                                         size="small"
-                                        sx={{ color: '#00695c' }}
+                                        sx={{ color: '#00BFBE' }}
                                         onClick={() => handleDecrement(item)}
                                     >
                                         <Delete />
@@ -189,7 +189,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                     </Typography>
                                     <IconButton
                                         size="small"
-                                        sx={{ color: '#00695c' }}
+                                        sx={{ color: '#00BFBE' }}
                                         onClick={() => handleIncrement(item)}
                                     >
                                         <AddCircle />
@@ -216,7 +216,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                         <Typography variant="body2" color="#666666">
                             Frete:
                         </Typography>
-                        <Typography variant="body1" fontWeight="bold" sx={{ color: '#00695c' }}>
+                        <Typography variant="body1" fontWeight="bold" sx={{ color: '#00BFBE' }}>
                             R$ {ajustaValor(parseFloat(frete))}
                         </Typography>
                     </Box>
@@ -226,7 +226,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                         <Typography variant="body2" color="#666666">
                             Total:
                         </Typography>
-                        <Typography variant="h5" fontWeight="bold" sx={{ color: '#00695c' }}>
+                        <Typography variant="h5" fontWeight="bold" sx={{ color: '#00BFBE' }}>
                             R$ {ajustaValor(parseFloat(totalValue))}
                         </Typography>
                     </Box>
