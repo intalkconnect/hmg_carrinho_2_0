@@ -12,8 +12,9 @@ import {
   Snackbar,
   Alert,
 } from '@mui/material';
-import { primaryColor } from './utils/colors';
 import { consultarCEP } from '../services/api';
+
+const primary = process.env.REACT_APP_PRIMARY_COLOR
 
 const locaisRetirada = [
   {
@@ -303,14 +304,14 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
-            color: '#primaryColor',
+            color: primary,
             '& .MuiSvgIcon-root': {
-              borderColor: '#primaryColor', // Linha do rádio quando não selecionado
+              borderColor: primary, // Linha do rádio quando não selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
-            '&.Mui-checked': { color: '#primaryColor' }
+            '&.Mui-checked': { color: primary }
           }}
         />
       }
@@ -327,14 +328,14 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
-            color: '#primaryColor',
+            color: primary,
             '& .MuiSvgIcon-root': {
-              borderColor: '#primaryColor', // Linha do rádio quando não selecionado
+              borderColor: primary, // Linha do rádio quando não selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
-            '&.Mui-checked': { color: '#primaryColor' }
+            '&.Mui-checked': { color: primary }
           }}
         />
       }
@@ -588,8 +589,8 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
                   variant="outlined"
                   sx={{
                     mt: 2,
-                    color: '#primaryColor',
-                    borderColor: '#primaryColor',
+                    color: primary,
+                    borderColor: primary,
                     textTransform: 'none',
                     ':hover': { bgcolor: '#004d40', color: '#fff' },
                   }}
@@ -616,8 +617,8 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
         alignSelf: 'flex-end',
         marginTop: 2,
-        borderColor: '#primaryColor', // Define a cor da borda
-        color: '#primaryColor', // Define a cor do texto
+        borderColor: primary, // Define a cor da borda
+        color: primary, // Define a cor do texto
         ':hover': {
             borderColor: '#004d40', // Cor da borda no hover
             backgroundColor: 'transparent', // Fundo transparente no hover
