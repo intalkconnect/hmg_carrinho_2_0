@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Box, TextField, Button } from '@mui/material';
+import { primaryColor } from './utils/colors';
 
 const validateCpfCnpj = (value) => {
     const cleaned = value.replace(/\D/g, '');
@@ -182,8 +183,8 @@ const Step1 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
         alignSelf: 'flex-end',
         marginTop: 2,
-        borderColor: '#00BFBE', // Define a cor da borda
-        color: '#00BFBE', // Define a cor do texto
+        borderColor: '#primaryColor', // Define a cor da borda
+        color: '#primaryColor', // Define a cor do texto
         ':hover': {
             borderColor: '#004d40', // Cor da borda no hover
             backgroundColor: 'transparent', // Fundo transparente no hover
