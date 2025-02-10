@@ -80,7 +80,15 @@ const getIconByType = (tipo) => {
           color: '#333333',
         }}
       >
-                        <ShoppingCart size={28} />
+                                    <Box 
+                sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center',
+                    gap: 1,
+                    color: '#00BFBE'
+                }}
+            >
+                <ShoppingCart size={24} />
                 <Typography 
                     variant="body2" 
                     sx={{ 
@@ -88,8 +96,9 @@ const getIconByType = (tipo) => {
                         display: { xs: 'none', sm: 'block' }
                     }}
                 >
-                    Resumo do Pedido
+                    Seu Pedido
                 </Typography>
+            </Box>
         <Divider sx={{ mb: 2, borderColor: '#e0e0e0' }} />
         <Box>
           {orcamentos.map((item, index) => (
