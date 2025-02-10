@@ -240,7 +240,7 @@ const Checkout = () => {
                     color: '#555',
                 }}
             >
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 80, color: '#00695c', marginBottom: 2 }} />
+                <ShoppingCartOutlinedIcon sx={{ fontSize: 80, color: '#00BFBE', marginBottom: 2 }} />
                 <Typography variant="h5" sx={{ textAlign: 'center', marginBottom: 2 }}>
                     Seu carrinho está vazio.
                 </Typography>
@@ -265,7 +265,7 @@ const Checkout = () => {
         flexDirection: 'column'
     }}
 >
-            {/* Substitua o AppBar atual por este */}
+
 <AppBar
     id="header"
     position="static"
@@ -368,9 +368,9 @@ const Checkout = () => {
             transition: 'transform 0.3s ease'
         }}>
             {expanded === 'step1' ? (
-                <CircleChevronUp color="#00695c" />
+                <CircleChevronUp color="#00BFBE" />
             ) : (
-                <CircleChevronDown color="#00695c" />
+                <CircleChevronDown color="#00BFBE" />
             )}
         </div>
     }
@@ -378,11 +378,11 @@ const Checkout = () => {
 >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {isStep1Completed ? (
-                <CircleCheckBig color="#00695c" />
+                <CircleCheckBig color="#00BFBE" />
             ) : (
-                <CircleUser color="#00695c" />
+                <CircleUser color="#00BFBE" />
             )}
-            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
                 Dados Pessoais
             </Typography>
         </Box>
@@ -413,9 +413,9 @@ const Checkout = () => {
             transition: 'transform 0.3s ease'
         }}>
             {expanded === 'step2' ? (
-                <CircleChevronUp color="#00695c" />
+                <CircleChevronUp color="#00BFBE" />
             ) : (
-                <CircleChevronDown color="#00695c" />
+                <CircleChevronDown color="#00BFBE" />
             )}
         </div>
     }
@@ -423,11 +423,11 @@ const Checkout = () => {
 >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             {isStep2Completed ? (
-                <CircleCheckBig color="#00695c" />
+                <CircleCheckBig color="#00BFBE" />
             ) : (
-                <Package color="#00695c" />
+                <Package color="#00BFBE" />
             )}
-            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
+            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
                 Entrega ou Retirada
             </Typography>
         </Box>
@@ -459,17 +459,17 @@ const Checkout = () => {
             transition: 'transform 0.3s ease'
         }}>
             {expanded === 'step3' ? (
-                <CircleChevronUp color="#00695c" />
+                <CircleChevronUp color="#00BFBE" />
             ) : (
-                <CircleChevronDown color="#00695c" />
+                <CircleChevronDown color="#00BFBE" />
             )}
         </div>
     }
     sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
 >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <CreditCard color="#00695c" />
-            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00695c' }}>
+            <CreditCard color="#00BFBE" />
+            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
                 Formas de Pagamento
             </Typography>
         </Box>
