@@ -182,8 +182,8 @@ const Step1 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
         alignSelf: 'flex-end',
         marginTop: 2,
-        borderColor: '#00695c', // Define a cor da borda
-        color: '#00695c', // Define a cor do texto
+        borderColor: '#00BFBE', // Define a cor da borda
+        color: '#00BFBE', // Define a cor do texto
         ':hover': {
             borderColor: '#004d40', // Cor da borda no hover
             backgroundColor: 'transparent', // Fundo transparente no hover
