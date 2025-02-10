@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { primaryColor } from './utils/colors';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -240,7 +241,7 @@ const Checkout = () => {
                     color: '#555',
                 }}
             >
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 80, color: '#00BFBE', marginBottom: 2 }} />
+                <ShoppingCartOutlinedIcon sx={{ fontSize: 80, color: primaryColor, marginBottom: 2 }} />
                 <Typography variant="h5" sx={{ textAlign: 'center', marginBottom: 2 }}>
                     Seu carrinho está vazio.
                 </Typography>
@@ -303,7 +304,7 @@ const Checkout = () => {
                                 <Typography
                                     variant="h6"
                                     sx={{
-                                        color: '#00BFBE',
+                                        color: primaryColor,
                                         fontWeight: 600,
                                         lineHeight: 1.2
                                     }}
@@ -318,7 +319,7 @@ const Checkout = () => {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 1,
-                                color: '#00BFBE'
+                                color: primaryColor
                             }}
                         >
                         </Box>
@@ -391,7 +392,7 @@ const Checkout = () => {
                                     ) : (
                                         <CircleUser color="#00BFBE" />
                                     )}
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: primaryColor }}>
                                         Dados Pessoais
                                     </Typography>
                                 </Box>
@@ -445,7 +446,7 @@ const Checkout = () => {
                                     ) : (
                                         <Package color="#00BFBE" />
                                     )}
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: primaryColor }}>
                                         Entrega ou Retirada
                                     </Typography>
                                 </Box>
@@ -496,7 +497,7 @@ const Checkout = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     <CreditCard color="#00BFBE" />
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: primaryColor }}>
                                         Formas de Pagamento
                                     </Typography>
                                 </Box>
