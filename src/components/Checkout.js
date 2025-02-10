@@ -22,7 +22,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 import { Snackbar, Alert } from '@mui/material';
 // Importe as imagens
-import Logo1 from '../assets/logo.webp';
+import Logo1 from '../assets/logonova.png';
 import LogoCentro from '../assets/logo1.png';
 import { calculateTotalValue, handleCheckoutSubmission, handleSnackbarOpen } from '../utils/helpers';
 
