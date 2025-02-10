@@ -370,9 +370,9 @@ const Checkout = () => {
                                         transition: 'transform 0.3s ease'
                                     }}>
                                         {expanded === 'step1' ? (
-                                            <CircleChevronUp color="#00BFBE" />
+                                            <CircleChevronUp color= {primary} />
                                         ) : (
-                                            <CircleChevronDown color="#00BFBE" />
+                                            <CircleChevronDown color= {primary} />
                                         )}
                                     </div>
                                 }
@@ -385,9 +385,9 @@ const Checkout = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep1Completed ? (
-                                        <CircleCheckBig color="#00BFBE" />
+                                        <CircleCheckBig color= {primary} />
                                     ) : (
-                                        <CircleUser color="#00BFBE" />
+                                        <CircleUser color= {primary} />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: primary }}>
                                         Dados Pessoais
@@ -424,9 +424,9 @@ const Checkout = () => {
                                         transition: 'transform 0.3s ease'
                                     }}>
                                         {expanded === 'step2' ? (
-                                            <CircleChevronUp color="#00BFBE" />
+                                            <CircleChevronUp color= {primary} />
                                         ) : (
-                                            <CircleChevronDown color="#00BFBE" />
+                                            <CircleChevronDown color= {primary} />
                                         )}
                                     </div>
                                 }
@@ -439,9 +439,9 @@ const Checkout = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep2Completed ? (
-                                        <CircleCheckBig color="#00BFBE" />
+                                        <CircleCheckBig color= {primary} />
                                     ) : (
-                                        <Package color="#00BFBE" />
+                                        <Package color= {primary} />
                                     )}
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: primary }}>
                                         Entrega ou Retirada
@@ -479,9 +479,9 @@ const Checkout = () => {
                                         transition: 'transform 0.3s ease'
                                     }}>
                                         {expanded === 'step3' ? (
-                                            <CircleChevronUp color="#00BFBE" />
+                                            <CircleChevronUp color= {primary} />
                                         ) : (
-                                            <CircleChevronDown color="#00BFBE" />
+                                            <CircleChevronDown color= {primary} />
                                         )}
                                     </div>
                                 }
@@ -493,7 +493,7 @@ const Checkout = () => {
                                 }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <CreditCard color="#00BFBE" />
+                                    <CreditCard color= {primary} />
                                     <Typography variant="h6" sx={{ fontWeight: 'bold', color: primary }}>
                                         Formas de Pagamento
                                     </Typography>
