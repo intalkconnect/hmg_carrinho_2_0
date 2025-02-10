@@ -16,7 +16,6 @@ import {
     Toolbar,
     Container,
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { CircleCheckBig, CircleUser, Package, CreditCard, CircleChevronDown, CircleChevronUp } from "lucide-react";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'; // Importa o ícone
 
