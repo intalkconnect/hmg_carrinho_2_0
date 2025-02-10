@@ -265,25 +265,85 @@ const Checkout = () => {
         flexDirection: 'column'
     }}
 >
-            <AppBar
-                id="header" // Adicionado ID para facilitar a captura
-                position="static"
-                elevation={0}
-                sx={{
-                    bgcolor: '#00BFBE',
-                    margin: 0,
-                    padding: 0,
+            {/* Substitua o AppBar atual por este */}
+<AppBar
+    id="header"
+    position="static"
+    elevation={0}
+    sx={{
+        bgcolor: '#ffffff',  // Mudando para branco para um look mais clean
+        borderBottom: '1px solid rgba(0, 0, 0, 0.1)',  // Adicionando uma borda sutil
+    }}
+>
+    <Container maxWidth="lg">
+        <Toolbar 
+            sx={{ 
+                py: 1,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}
+        >
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                <img 
+                    src={Logo1} 
+                    alt="Lantana" 
+                    style={{ 
+                        height: 60,
+                        objectFit: 'contain'
+                    }} 
+                />
+                <Box 
+                    sx={{ 
+                        borderLeft: '2px solid #00BFBE',
+                        pl: 3,
+                        display: { xs: 'none', md: 'block' }
+                    }}
+                >
+                    <Typography 
+                        variant="h6" 
+                        sx={{ 
+                            color: '#00BFBE',
+                            fontWeight: 600,
+                            lineHeight: 1.2
+                        }}
+                    >
+                        Checkout Seguro
+                    </Typography>
+                    <Typography 
+                        variant="body2" 
+                        sx={{ 
+                            color: '#666666',
+                            mt: 0.5
+                        }}
+                    >
+                        Farmácia de Manipulação
+                    </Typography>
+                </Box>
+            </Box>
+
+            <Box 
+                sx={{ 
+                    display: 'flex', 
+                    alignItems: 'center',
+                    gap: 1,
+                    color: '#00BFBE'
                 }}
             >
-                <Toolbar>
-                    <Container sx={{
-                        padding: 0,
-                        maxWidth: '100%',
-                    }}>
-                        <img src={Logo1} alt="Logo 1" style={{ height: 80 }} />
-                    </Container>
-                </Toolbar>
-            </AppBar>
+                <ShoppingCartOutlinedIcon sx={{ fontSize: 24 }} />
+                <Typography 
+                    variant="body2" 
+                    sx={{ 
+                        fontWeight: 500,
+                        display: { xs: 'none', sm: 'block' }
+                    }}
+                >
+                    Seu Pedido
+                </Typography>
+            </Box>
+        </Toolbar>
+    </Container>
+</AppBar>
 
             <Container sx={{ marginTop: 3, marginBottom: 3 }}>
                 <Grid container spacing={3}>
