@@ -92,12 +92,12 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                 >
                     <ShoppingCart
                         size={24}
-                        color= primary
+                        color= {primary}
                     />
                     <Typography
                         variant="h6"
                         sx={{
-                            color: primary,
+                            color: {primary},
                             fontWeight: 600,
                             fontSize: '1.1rem'
                         }}
