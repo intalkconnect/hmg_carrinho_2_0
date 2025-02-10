@@ -1127,6 +1127,28 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
 
         {formaPagamento === 'pix' && (
           <Box sx={{ mt: 2 }}>
+    {loading && (
+      <Box 
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          p: 4
+        }}
+      >
+        <CircularProgress 
+          size={60}
+          sx={{ 
+            color: primary,
+            mb: 2
+          }}
+        />
+        <Typography variant="subtitle1" color="textSecondary">
+          Gerando QR Code PIX...
+        </Typography>
+      </Box>
+    )}
             {!loading && !qrcode && !isQrCodeUpdated && (
               <Box sx={{ textAlign: 'center', mt: 3 }}>
                 <Typography variant="subtitle1" sx={{ mb: 2 }}>
