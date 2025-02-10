@@ -302,14 +302,14 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
-            color: '#00695c',
+            color: '#00BFBE',
             '& .MuiSvgIcon-root': {
-              borderColor: '#00695c', // Linha do rádio quando não selecionado
+              borderColor: '#00BFBE', // Linha do rádio quando não selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
-            '&.Mui-checked': { color: '#00695c' }
+            '&.Mui-checked': { color: '#00BFBE' }
           }}
         />
       }
@@ -326,14 +326,14 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
       control={
         <Radio
           sx={{
-            color: '#00695c',
+            color: '#00BFBE',
             '& .MuiSvgIcon-root': {
-              borderColor: '#00695c', // Linha do rádio quando não selecionado
+              borderColor: '#00BFBE', // Linha do rádio quando não selecionado
             },
             '&:hover': {
               backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
             },
-            '&.Mui-checked': { color: '#00695c' }
+            '&.Mui-checked': { color: '#00BFBE' }
           }}
         />
       }
@@ -587,8 +587,8 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
                   variant="outlined"
                   sx={{
                     mt: 2,
-                    color: '#00695c',
-                    borderColor: '#00695c',
+                    color: '#00BFBE',
+                    borderColor: '#00BFBE',
                     textTransform: 'none',
                     ':hover': { bgcolor: '#004d40', color: '#fff' },
                   }}
@@ -615,8 +615,8 @@ const Step2 = ({ formData, handleInputChange, nextStep }) => {
     sx={{
         alignSelf: 'flex-end',
         marginTop: 2,
-        borderColor: '#00695c', // Define a cor da borda
-        color: '#00695c', // Define a cor do texto
+        borderColor: '#00BFBE', // Define a cor da borda
+        color: '#00BFBE', // Define a cor do texto
         ':hover': {
             borderColor: '#004d40', // Cor da borda no hover
             backgroundColor: 'transparent', // Fundo transparente no hover
