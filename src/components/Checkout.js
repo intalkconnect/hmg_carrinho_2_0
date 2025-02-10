@@ -424,7 +424,7 @@ const Checkout = () => {
                                         )}
                                     </div>
                                 }
-                                {{
+                                sx={{
                                     bgcolor: expanded === 'step2' ? '#E5F6F6' : '#ffffff',
                                     '&:hover': {
                                         bgcolor: '#F0FAFA'
@@ -475,7 +475,7 @@ const Checkout = () => {
                                         )}
                                     </div>
                                 }
-                                {{
+                                sx={{
                                     bgcolor: expanded === 'step3' ? '#E5F6F6' : '#ffffff',
                                     '&:hover': {
                                         bgcolor: '#F0FAFA'
