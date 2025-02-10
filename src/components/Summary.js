@@ -88,13 +88,14 @@ const getIconByType = (tipo) => {
                     color: '#00BFBE'
                 }}
             >
-                <ShoppingCart size={24} />
+                <ShoppingCart />
                 <Typography 
                     variant="body2" 
-                    sx={{ 
-                        fontWeight: 500,
-                        display: { xs: 'none', sm: 'block' }
-                    }}
+                        sx={{ 
+        color: '#1E293B',
+        fontWeight: 600,
+        lineHeight: 1.2
+    }}
                 >
                     Seu Pedido
                 </Typography>
