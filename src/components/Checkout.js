@@ -310,15 +310,6 @@ const Checkout = () => {
                     >
                         Checkout Seguro
                     </Typography>
-                    <Typography 
-                        variant="body2" 
-                        sx={{ 
-                            color: '#666666',
-                            mt: 0.5
-                        }}
-                    >
-                        Farmácia de Manipulação
-                    </Typography>
                 </Box>
             </Box>
 
@@ -330,16 +321,6 @@ const Checkout = () => {
                     color: '#00BFBE'
                 }}
             >
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 24 }} />
-                <Typography 
-                    variant="body2" 
-                    sx={{ 
-                        fontWeight: 500,
-                        display: { xs: 'none', sm: 'block' }
-                    }}
-                >
-                    Seu Pedido
-                </Typography>
             </Box>
         </Toolbar>
     </Container>
