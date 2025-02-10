@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { primaryColor } from './utils/colors';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -241,7 +240,7 @@ const Checkout = () => {
                     color: '#555',
                 }}
             >
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 80, color: primaryColor, marginBottom: 2 }} />
+                <ShoppingCartOutlinedIcon sx={{ fontSize: 80, color: '#REACT_APP_PRIMARY_COLOR;', marginBottom: 2 }} />
                 <Typography variant="h5" sx={{ textAlign: 'center', marginBottom: 2 }}>
                     Seu carrinho está vazio.
                 </Typography>
@@ -296,7 +295,7 @@ const Checkout = () => {
                             />
                             <Box
                                 sx={{
-                                    borderLeft: '2px solid #00BFBE',
+                                    borderLeft: '2px solid #REACT_APP_PRIMARY_COLOR;',
                                     pl: 3,
                                     display: { xs: 'none', md: 'block' }
                                 }}
@@ -304,7 +303,7 @@ const Checkout = () => {
                                 <Typography
                                     variant="h6"
                                     sx={{
-                                        color: primaryColor,
+                                        color: '#REACT_APP_PRIMARY_COLOR;',
                                         fontWeight: 600,
                                         lineHeight: 1.2
                                     }}
@@ -319,7 +318,7 @@ const Checkout = () => {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: 1,
-                                color: primaryColor
+                                color: '#REACT_APP_PRIMARY_COLOR;'
                             }}
                         >
                         </Box>
@@ -373,9 +372,9 @@ const Checkout = () => {
                                         transition: 'transform 0.3s ease'
                                     }}>
                                         {expanded === 'step1' ? (
-                                            <CircleChevronUp color="#00BFBE" />
+                                            <CircleChevronUp color="#REACT_APP_PRIMARY_COLOR;" />
                                         ) : (
-                                            <CircleChevronDown color="#00BFBE" />
+                                            <CircleChevronDown color="#REACT_APP_PRIMARY_COLOR;" />
                                         )}
                                     </div>
                                 }
@@ -388,11 +387,11 @@ const Checkout = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep1Completed ? (
-                                        <CircleCheckBig color="#00BFBE" />
+                                        <CircleCheckBig color="#REACT_APP_PRIMARY_COLOR;" />
                                     ) : (
-                                        <CircleUser color="#00BFBE" />
+                                        <CircleUser color="#REACT_APP_PRIMARY_COLOR;" />
                                     )}
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: primaryColor }}>
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#REACT_APP_PRIMARY_COLOR;' }}>
                                         Dados Pessoais
                                     </Typography>
                                 </Box>
@@ -427,9 +426,9 @@ const Checkout = () => {
                                         transition: 'transform 0.3s ease'
                                     }}>
                                         {expanded === 'step2' ? (
-                                            <CircleChevronUp color="#00BFBE" />
+                                            <CircleChevronUp color="#REACT_APP_PRIMARY_COLOR;" />
                                         ) : (
-                                            <CircleChevronDown color="#00BFBE" />
+                                            <CircleChevronDown color="#REACT_APP_PRIMARY_COLOR;" />
                                         )}
                                     </div>
                                 }
@@ -442,11 +441,11 @@ const Checkout = () => {
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {isStep2Completed ? (
-                                        <CircleCheckBig color="#00BFBE" />
+                                        <CircleCheckBig color="#REACT_APP_PRIMARY_COLOR;" />
                                     ) : (
-                                        <Package color="#00BFBE" />
+                                        <Package color="#REACT_APP_PRIMARY_COLOR;" />
                                     )}
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: primaryColor }}>
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#REACT_APP_PRIMARY_COLOR;' }}>
                                         Entrega ou Retirada
                                     </Typography>
                                 </Box>
@@ -482,9 +481,9 @@ const Checkout = () => {
                                         transition: 'transform 0.3s ease'
                                     }}>
                                         {expanded === 'step3' ? (
-                                            <CircleChevronUp color="#00BFBE" />
+                                            <CircleChevronUp color="#REACT_APP_PRIMARY_COLOR;" />
                                         ) : (
-                                            <CircleChevronDown color="#00BFBE" />
+                                            <CircleChevronDown color="#REACT_APP_PRIMARY_COLOR;" />
                                         )}
                                     </div>
                                 }
@@ -496,8 +495,8 @@ const Checkout = () => {
                                 }}
                             >
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                    <CreditCard color="#00BFBE" />
-                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: primaryColor }}>
+                                    <CreditCard color="#REACT_APP_PRIMARY_COLOR;" />
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#REACT_APP_PRIMARY_COLOR;' }}>
                                         Formas de Pagamento
                                     </Typography>
                                 </Box>
