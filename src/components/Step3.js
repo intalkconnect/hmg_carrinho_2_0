@@ -870,7 +870,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     </Box>
   </Box>
 )}
-      <Typography variant="h6" sx={{ mb: 2 }}>Escolha a forma de pagamento:</Typography>
+      <Typography variant="body1" >Escolha a forma de pagamento:</Typography>
 
       <Box
         component="form"
