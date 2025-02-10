@@ -80,7 +80,6 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                     color: '#333333',
                 }}
             >
-                                    // Substitua o Box do título por:
                 <Box
                     sx={{
                         display: 'flex',
