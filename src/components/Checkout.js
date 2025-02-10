@@ -253,78 +253,78 @@ const Checkout = () => {
 
 
     return (
-<Box
-    sx={{
-        bgcolor: '#f4f8fa',
-        minHeight: '100vh',
-        margin: 0,
-        padding: 0,
-        width: '100vw',
-        overflowX: 'hidden',
-        display: 'flex',
-        flexDirection: 'column'
-    }}
->
-
-<AppBar
-    id="header"
-    position="static"
-    elevation={0}
-    sx={{
-        bgcolor: '#ffffff',  // Mudando para branco para um look mais clean
-        borderBottom: '1px solid rgba(0, 0, 0, 0.1)',  // Adicionando uma borda sutil
-    }}
->
-    <Container maxWidth="lg">
-        <Toolbar 
-            sx={{ 
-                py: 1,
+        <Box
+            sx={{
+                bgcolor: '#f4f8fa',
+                minHeight: '100vh',
+                margin: 0,
+                padding: 0,
+                width: '100vw',
+                overflowX: 'hidden',
                 display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
+                flexDirection: 'column'
             }}
         >
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                <img 
-                    src={Logo1} 
-                    alt="Lantana" 
-                    style={{ 
-                        height: 60,
-                        objectFit: 'contain'
-                    }} 
-                />
-                <Box 
-                    sx={{ 
-                        borderLeft: '2px solid #00BFBE',
-                        pl: 3,
-                        display: { xs: 'none', md: 'block' }
-                    }}
-                >
-                    <Typography 
-                        variant="h6" 
-                        sx={{ 
-                            color: '#00BFBE',
-                            fontWeight: 600,
-                            lineHeight: 1.2
-                        }}
-                    >
-                        Checkout Seguro
-                    </Typography>
-                </Box>
-            </Box>
 
-            <Box 
-                sx={{ 
-                    display: 'flex', 
-                    alignItems: 'center',
-                    gap: 1,
-                    color: '#00BFBE'
+            <AppBar
+                id="header"
+                position="static"
+                elevation={0}
+                sx={{
+                    bgcolor: '#ffffff',  // Mudando para branco para um look mais clean
+                    borderBottom: '1px solid rgba(0, 0, 0, 0.1)',  // Adicionando uma borda sutil
                 }}
             >
-            </Box>
-        </Toolbar>
-    </Container>
-</AppBar>
+                <Container maxWidth="lg">
+                    <Toolbar
+                        sx={{
+                            py: 1,
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                            <img
+                                src={Logo1}
+                                alt="Lantana"
+                                style={{
+                                    height: 60,
+                                    objectFit: 'contain'
+                                }}
+                            />
+                            <Box
+                                sx={{
+                                    borderLeft: '2px solid #00BFBE',
+                                    pl: 3,
+                                    display: { xs: 'none', md: 'block' }
+                                }}
+                            >
+                                <Typography
+                                    variant="h6"
+                                    sx={{
+                                        color: '#00BFBE',
+                                        fontWeight: 600,
+                                        lineHeight: 1.2
+                                    }}
+                                >
+                                    Checkout Seguro
+                                </Typography>
+                            </Box>
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 1,
+                                color: '#00BFBE'
+                            }}
+                        >
+                        </Box>
+                    </Toolbar>
+                </Container>
+            </AppBar>
 
             <Container sx={{ marginTop: 3, marginBottom: 3 }}>
                 <Grid container spacing={3}>
@@ -353,198 +353,213 @@ const Checkout = () => {
                         }}
                     >
                         <Accordion
-    expanded={expanded === 'step1'}
-    onChange={handleAccordionChange('step1')}
-    sx={{
-        marginBottom: 2,
-        border: '1px solid #ddd',
-        borderRadius: 2,
-    }}
->
-    <AccordionSummary
-    expandIcon={
-        <div style={{
-            transform: expanded === 'step1' ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.3s ease'
-        }}>
-            {expanded === 'step1' ? (
-                <CircleChevronUp color="#00BFBE" />
-            ) : (
-                <CircleChevronDown color="#00BFBE" />
-            )}
-        </div>
-    }
-    sx={{ bgcolor: expanded === 'step1' ? '#e8f5e9' : '#ffffff' }}
->
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            {isStep1Completed ? (
-                <CircleCheckBig color="#00BFBE" />
-            ) : (
-                <CircleUser color="#00BFBE" />
-            )}
-            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
-                Dados Pessoais
-            </Typography>
-        </Box>
-    </AccordionSummary>
-    <AccordionDetails>
-        <Step1
-            formData={formData}
-            handleInputChange={handleInputChange}
-            nextStep={handleStep1Complete}
-        />
-    </AccordionDetails>
-</Accordion>
+                            expanded={expanded === 'step1'}
+                            onChange={handleAccordionChange('step1')}
+                            sx={{
+                                marginBottom: 2,
+                                border: '1px solid #ddd',
+                                borderRadius: 2,
+                            }}
+                        >
+                            <AccordionSummary
+                                expandIcon={
+                                    <div style={{
+                                        transform: expanded === 'step1' ? 'rotate(180deg)' : 'rotate(0deg)',
+                                        transition: 'transform 0.3s ease'
+                                    }}>
+                                        {expanded === 'step1' ? (
+                                            <CircleChevronUp color="#00BFBE" />
+                                        ) : (
+                                            <CircleChevronDown color="#00BFBE" />
+                                        )}
+                                    </div>
+                                }
+                                {{
+                                    bgcolor: expanded === 'step1' ? '#E5F6F6' : '#ffffff',
+                                    '&:hover': {
+                                        bgcolor: '#F0FAFA'
+                                    }
+                                }}
+                            >
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                    {isStep1Completed ? (
+                                        <CircleCheckBig color="#00BFBE" />
+                                    ) : (
+                                        <CircleUser color="#00BFBE" />
+                                    )}
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
+                                        Dados Pessoais
+                                    </Typography>
+                                </Box>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Step1
+                                    formData={formData}
+                                    handleInputChange={handleInputChange}
+                                    nextStep={handleStep1Complete}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
 
-<Accordion
-    expanded={expanded === 'step2'}
-    onChange={handleAccordionChange('step2')}
-    disabled={!isStep1Completed}
-    sx={{
-        marginBottom: 2,
-        border: '1px solid #ddd',
-        borderRadius: 2,
-    }}
->
-    <AccordionSummary
-    expandIcon={
-        <div style={{
-            transform: expanded === 'step2' ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.3s ease'
-        }}>
-            {expanded === 'step2' ? (
-                <CircleChevronUp color="#00BFBE" />
-            ) : (
-                <CircleChevronDown color="#00BFBE" />
-            )}
-        </div>
-    }
-    sx={{ bgcolor: expanded === 'step2' ? '#e8f5e9' : '#ffffff' }}
->
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            {isStep2Completed ? (
-                <CircleCheckBig color="#00BFBE" />
-            ) : (
-                <Package color="#00BFBE" />
-            )}
-            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
-                Entrega ou Retirada
-            </Typography>
-        </Box>
-    </AccordionSummary>
-    <AccordionDetails>
-        <Step2
-            formData={formData}
-            handleInputChange={handleInputChange}
-            nextStep={handleStep2Complete}
-            prevStep={() => setExpanded('step1')}
-        />
-    </AccordionDetails>
-</Accordion>
+                        <Accordion
+                            expanded={expanded === 'step2'}
+                            onChange={handleAccordionChange('step2')}
+                            disabled={!isStep1Completed}
+                            sx={{
+                                marginBottom: 2,
+                                border: '1px solid #ddd',
+                                borderRadius: 2,
+                            }}
+                        >
+                            <AccordionSummary
+                                expandIcon={
+                                    <div style={{
+                                        transform: expanded === 'step2' ? 'rotate(180deg)' : 'rotate(0deg)',
+                                        transition: 'transform 0.3s ease'
+                                    }}>
+                                        {expanded === 'step2' ? (
+                                            <CircleChevronUp color="#00BFBE" />
+                                        ) : (
+                                            <CircleChevronDown color="#00BFBE" />
+                                        )}
+                                    </div>
+                                }
+                                {{
+                                    bgcolor: expanded === 'step2' ? '#E5F6F6' : '#ffffff',
+                                    '&:hover': {
+                                        bgcolor: '#F0FAFA'
+                                    }
+                                }}
+                            >
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                    {isStep2Completed ? (
+                                        <CircleCheckBig color="#00BFBE" />
+                                    ) : (
+                                        <Package color="#00BFBE" />
+                                    )}
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
+                                        Entrega ou Retirada
+                                    </Typography>
+                                </Box>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Step2
+                                    formData={formData}
+                                    handleInputChange={handleInputChange}
+                                    nextStep={handleStep2Complete}
+                                    prevStep={() => setExpanded('step1')}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
 
-<Accordion
-    expanded={expanded === 'step3'}
-    onChange={handleAccordionChange('step3')}
-    disabled={!isStep2Completed}
-    sx={{
-        marginBottom: 2,
-        border: '1px solid #ddd',
-        borderRadius: 2,
-    }}
->
-    <AccordionSummary
-    expandIcon={
-        <div style={{
-            transform: expanded === 'step3' ? 'rotate(180deg)' : 'rotate(0deg)',
-            transition: 'transform 0.3s ease'
-        }}>
-            {expanded === 'step3' ? (
-                <CircleChevronUp color="#00BFBE" />
-            ) : (
-                <CircleChevronDown color="#00BFBE" />
-            )}
-        </div>
-    }
-    sx={{ bgcolor: expanded === 'step3' ? '#e8f5e9' : '#ffffff' }}
->
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <CreditCard color="#00BFBE" />
-            <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
-                Formas de Pagamento
-            </Typography>
-        </Box>
-    </AccordionSummary>
-    <AccordionDetails>
-        <Step3
-            formData={formData}
-            handleInputChange={handleInputChange}
-            prevStep={() => setExpanded('step2')}
-            finalizeCheckout={handleCheckout}
-            totalValue={totalValue}
-        />
-    </AccordionDetails>
-</Accordion>
+                        <Accordion
+                            expanded={expanded === 'step3'}
+                            onChange={handleAccordionChange('step3')}
+                            disabled={!isStep2Completed}
+                            sx={{
+                                marginBottom: 2,
+                                border: '1px solid #ddd',
+                                borderRadius: 2,
+                            }}
+                        >
+                            <AccordionSummary
+                                expandIcon={
+                                    <div style={{
+                                        transform: expanded === 'step3' ? 'rotate(180deg)' : 'rotate(0deg)',
+                                        transition: 'transform 0.3s ease'
+                                    }}>
+                                        {expanded === 'step3' ? (
+                                            <CircleChevronUp color="#00BFBE" />
+                                        ) : (
+                                            <CircleChevronDown color="#00BFBE" />
+                                        )}
+                                    </div>
+                                }
+                                {{
+                                    bgcolor: expanded === 'step3' ? '#E5F6F6' : '#ffffff',
+                                    '&:hover': {
+                                        bgcolor: '#F0FAFA'
+                                    }
+                                }}
+                            >
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                    <CreditCard color="#00BFBE" />
+                                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#00BFBE' }}>
+                                        Formas de Pagamento
+                                    </Typography>
+                                </Box>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Step3
+                                    formData={formData}
+                                    handleInputChange={handleInputChange}
+                                    prevStep={() => setExpanded('step2')}
+                                    finalizeCheckout={handleCheckout}
+                                    totalValue={totalValue}
+                                />
+                            </AccordionDetails>
+                        </Accordion>
 
                     </Grid>
                 </Grid>
             </Container>
-<Box 
-    component="footer" 
-    sx={{
-        bgcolor: '#f8f8f8',
-        borderTop: '1px solid #e0e0e0',
-        py: 4,
-        px: 2,
-        mt: 'auto'
-    }}
->
-    <Container maxWidth="lg">
-        <Typography 
-            variant="body1"
-            align="center" 
-            sx={{ 
-                color: '#666666',
-                fontSize: '0.9rem',
-                lineHeight: 1.8,
-                fontWeight: 500
-            }}
-        >
-            LANTANA LTDA
-            <br />
-            CNPJ: 03.915.693/0001-30 | Farmacêutica Responsável: Andrea Kamizaki Lima | CRF: 12045
-        </Typography>
-        
-        <Typography 
-            variant="body1"
-            align="center" 
-            sx={{ 
-                color: '#666666',
-                fontSize: '0.9rem',
-                mt: 3,
-                fontStyle: 'italic',
-                lineHeight: 1.8
-            }}
-        >
-            As informações contidas neste site não devem ser usadas para automedicação e não substituem, 
-            em hipótese alguma, as orientações dadas pelo profissional da área médica. 
-            Somente o médico está apto a diagnosticar qualquer problema de saúde e prescrever o tratamento adequado.
-        </Typography>
-        
-        <Typography 
-            variant="body1"
-            align="center" 
-            sx={{ 
-                color: '#666666',
-                fontSize: '0.9rem',
-                mt: 3,
-                fontWeight: 500,
-                lineHeight: 1.8
-            }}
-        >
-            Ao persistirem os sintomas, um médico deverá ser consultado.
-        </Typography>
-    </Container>
-</Box>
+            <Box
+                component="footer"
+                sx={{
+                    bgcolor: '#f8f8f8',
+                    borderTop: '1px solid #e0e0e0',
+                    py: 4,
+                    px: 2,
+                    mt: 'auto'
+                }}
+            >
+                <Container maxWidth="lg">
+                    <Typography
+                        variant="body1"
+                        align="center"
+                        sx={{
+                            color: '#666666',
+                            fontSize: '0.9rem',
+                            lineHeight: 1.8,
+                            fontWeight: 500
+                        }}
+                    >
+                        LANTANA LTDA
+                        <br />
+                        CNPJ: 03.915.693/0001-30 | Farmacêutica Responsável: Andrea Kamizaki Lima | CRF: 12045
+                    </Typography>
+
+                    <Typography
+                        variant="body1"
+                        align="center"
+                        sx={{
+                            color: '#666666',
+                            fontSize: '0.9rem',
+                            mt: 3,
+                            fontStyle: 'italic',
+                            lineHeight: 1.8
+                        }}
+                    >
+                        As informações contidas neste site não devem ser usadas para automedicação e não substituem,
+                        em hipótese alguma, as orientações dadas pelo profissional da área médica.
+                        Somente o médico está apto a diagnosticar qualquer problema de saúde e prescrever o tratamento adequado.
+                    </Typography>
+
+                    <Typography
+                        variant="body1"
+                        align="center"
+                        sx={{
+                            color: '#666666',
+                            fontSize: '0.9rem',
+                            mt: 3,
+                            fontWeight: 500,
+                            lineHeight: 1.8
+                        }}
+                    >
+                        Ao persistirem os sintomas, um médico deverá ser consultado.
+                    </Typography>
+                </Container>
+            </Box>
 
             {isModalVisible && (
                 <Modal
