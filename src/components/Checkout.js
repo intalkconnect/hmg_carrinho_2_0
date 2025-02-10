@@ -359,6 +359,10 @@ const Checkout = () => {
                                 marginBottom: 2,
                                 border: '1px solid #ddd',
                                 borderRadius: 2,
+                                '&.Mui-disabled': {
+                                    bgcolor: '#F5F9F9',
+                                    opacity: 0.9
+                                }
                             }}
                         >
                             <AccordionSummary
@@ -409,6 +413,10 @@ const Checkout = () => {
                                 marginBottom: 2,
                                 border: '1px solid #ddd',
                                 borderRadius: 2,
+                                '&.Mui-disabled': {
+                                    bgcolor: '#F5F9F9',
+                                    opacity: 0.9
+                                }
                             }}
                         >
                             <AccordionSummary
@@ -460,6 +468,10 @@ const Checkout = () => {
                                 marginBottom: 2,
                                 border: '1px solid #ddd',
                                 borderRadius: 2,
+                                '&.Mui-disabled': {
+                                    bgcolor: '#F5F9F9',
+                                    opacity: 0.9
+                                }
                             }}
                         >
                             <AccordionSummary
