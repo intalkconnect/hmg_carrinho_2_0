@@ -13,6 +13,7 @@ import {
   TextField,
   MenuItem,
 } from '@mui/material';
+import { primaryColor } from './utils/colors';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -912,12 +913,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               control={
                 <Radio
                   sx={{
-                    color: '#00BFBE',
-                    '&.Mui-checked': { color: '#00BFBE' },
+                    color: '#primaryColor',
+                    '&.Mui-checked': { color: '#primaryColor' },
                     '&:hover': {
                     backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
                     },
-                    '&.Mui-checked': { color: '#00BFBE' }
+                    '&.Mui-checked': { color: '#primaryColor' }
                     }}
                   disabled={disableOptions}
                 />
@@ -929,12 +930,12 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               control={
                 <Radio
                   sx={{
-                    color: '#00BFBE',
-                    '&.Mui-checked': { color: '#00BFBE' },
+                    color: '#primaryColor',
+                    '&.Mui-checked': { color: '#primaryColor' },
                     '&:hover': {
                     backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
                     },
-                    '&.Mui-checked': { color: '#00BFBE' }
+                    '&.Mui-checked': { color: '#primaryColor' }
                   }}
                 />
               }
@@ -1053,8 +1054,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               sx={{
                 alignSelf: 'flex-end',
                 marginTop: 2,
-                borderColor: '#00BFBE', // Define a cor da borda
-                color: '#00BFBE', // Define a cor do texto
+                borderColor: '#primaryColor', // Define a cor da borda
+                color: '#primaryColor', // Define a cor do texto
                 ':hover': {
                   borderColor: '#004d40', // Cor da borda no hover
                   backgroundColor: 'transparent', // Fundo transparente no hover
@@ -1098,7 +1099,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                     <CircularProgress
                       size={80}
                       sx={{
-                        color: '#00BFBE',
+                        color: '#primaryColor',
                         mb: 3
                       }}
                     />
@@ -1144,8 +1145,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                   sx={{
                     alignSelf: 'flex-end',
                     marginTop: 2,
-                    borderColor: '#00BFBE', // Define a cor da borda
-                    color: '#00BFBE', // Define a cor do texto
+                    borderColor: '#primaryColor', // Define a cor da borda
+                    color: '#primaryColor', // Define a cor do texto
                     ':hover': {
                       borderColor: '#004d40', // Cor da borda no hover
                       backgroundColor: 'transparent', // Fundo transparente no hover
@@ -1162,7 +1163,7 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
               <Box
                 sx={{
                   textAlign: 'center',
-                  border: '1px solid #00BFBE',
+                  border: '1px solid #primaryColor',
                   borderRadius: 2,
                   p: 3,
                 }}
@@ -1187,8 +1188,8 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                   sx={{
                     alignSelf: 'flex-end',
                     marginTop: 2,
-                    borderColor: '#00BFBE', // Define a cor da borda
-                    color: '#00BFBE', // Define a cor do texto
+                    borderColor: '#primaryColor', // Define a cor da borda
+                    color: '#primaryColor', // Define a cor do texto
                     ':hover': {
                       borderColor: '#004d40', // Cor da borda no hover
                       backgroundColor: 'transparent', // Fundo transparente no hover
