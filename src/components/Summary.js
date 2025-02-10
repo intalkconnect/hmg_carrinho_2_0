@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { AddCircle, Delete } from '@mui/icons-material';
 import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan, Cookie, ShoppingCart } from "lucide-react";
-
+import { primaryColor } from './utils/colors';
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
 
