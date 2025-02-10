@@ -202,7 +202,7 @@ const Summary = ({ orcamentos, updateTotalValue, frete = 0 }) => {
                                 <Typography
                                     variant="body1"
                                     fontWeight="bold"
-                                    sx={{ color: '#004D40' }}
+                                    sx={{ color: '#00BFBE' }}
                                 >
                                     R$ {ajustaValor(item.orc_valor_liquido * item.orc_qt_potes)}
                                 </Typography>
