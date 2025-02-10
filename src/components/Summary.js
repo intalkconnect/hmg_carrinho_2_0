@@ -80,13 +80,16 @@ const getIconByType = (tipo) => {
           color: '#333333',
         }}
       >
-        <Typography
-          variant="h5"
-          gutterBottom
-          sx={{ color: '#00695c', fontWeight: 'bold' }}
-        >
-          Resumo do Pedido
-        </Typography>
+                        <ShoppingCartOutlinedIcon sx={{ fontSize: 24 }} />
+                <Typography 
+                    variant="body2" 
+                    sx={{ 
+                        fontWeight: 500,
+                        display: { xs: 'none', sm: 'block' }
+                    }}
+                >
+                    Resumo do Pedido
+                </Typography>
         <Divider sx={{ mb: 2, borderColor: '#e0e0e0' }} />
         <Box>
           {orcamentos.map((item, index) => (
