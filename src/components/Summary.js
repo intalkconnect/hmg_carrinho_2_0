@@ -8,7 +8,7 @@ import {
   Paper,
 } from '@mui/material';
 import { AddCircle, Delete } from '@mui/icons-material';
-import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan, Cookie } from "lucide-react";
+import { Pill, FlaskConical, Package, Milk, Archive, FileSearch, SprayCan, Cookie, ShoppingCart } from "lucide-react";
 
 import { ajustaValor, capitalizeFirstLetter } from '../utils/helpers';
 import Modal from './Modal';
@@ -80,7 +80,7 @@ const getIconByType = (tipo) => {
           color: '#333333',
         }}
       >
-                        <ShoppingCartOutlinedIcon sx={{ fontSize: 24 }} />
+                        <ShoppingCart size={28} />
                 <Typography 
                     variant="body2" 
                     sx={{ 
