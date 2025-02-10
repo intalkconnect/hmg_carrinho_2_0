@@ -106,7 +106,6 @@ const Checkout = () => {
         );
     }
 
-    // Exibe mensagens baseadas no status do orçamento
     if (status === 'expired') {
         return (
             <Box
