@@ -124,12 +124,6 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
     return match ? `(${match[1]}) ${match[2]}-${match[3]}` : value;
   };
 
-  const maskCardNumber = (number) => {
-    const visibleDigits = 4;
-    const maskedPortion = number.slice(0, -visibleDigits).replace(/\d/g, '•');
-    return maskedPortion + number.slice(-visibleDigits);
-  };
-
   const clearSensitiveData = () => {
     setCardDetails({
       nomeCartao: '',
@@ -919,7 +913,6 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                     '&:hover': {
                     backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
                     },
-                    '&.Mui-checked': { color: primary }
                     }}
                   disabled={disableOptions}
                 />
@@ -936,7 +929,6 @@ const Step3 = ({ handleInputChange, finalizeCheckout, totalValue, formData }) =>
                     '&:hover': {
                     backgroundColor: 'rgba(0, 121, 107, 0.1)', // Efeito hover suave
                     },
-                    '&.Mui-checked': { color: primary }
                   }}
                 />
               }
