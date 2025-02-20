@@ -9,16 +9,20 @@ import {
   ResponsiveContainer,
   Cell
 } from 'recharts';
-
-const DIAS_SEMANA = {
-  0: 'Domingo',
-  1: 'Segunda',
-  2: 'Terça',
-  3: 'Quarta',
-  4: 'Quinta',
-  5: 'Sexta',
-  6: 'Sábado'
-};
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Grid,
+  Container
+} from '@mui/material';
+import { CalendarToday } from '@mui/icons-material';
 
 const Dashboard = () => {
   const [dados, setDados] = useState([]);
@@ -57,40 +61,6 @@ const Dashboard = () => {
     return dadosFiltrados;
   };
 
-  const analisarPedidosPorDiaSemana = () => {
-    const pedidosPorDia = dados.reduce((acc, item) => {
-      const data = new Date(item.dataCriacao);
-      const diaSemana = data.getDay();
-      
-      if (!acc[diaSemana]) {
-        acc[diaSemana] = {
-          total: 0,
-          pendentes: 0,
-          nome: DIAS_SEMANA[diaSemana]
-        };
-      }
-      
-      acc[diaSemana].total += 1;
-      if (item.status === 'pending') {
-        acc[diaSemana].pendentes += 1;
-      }
-      
-      return acc;
-    }, {});
-
-    return Object.entries(pedidosPorDia)
-      .map(([dia, dados]) => ({
-        nome: dados.nome,
-        total: dados.total,
-        pendentes: dados.pendentes,
-        taxaPendencia: dados.total ? ((dados.pendentes / dados.total) * 100).toFixed(1) : '0'
-      }))
-      .sort((a, b) => 
-        Object.keys(DIAS_SEMANA).findIndex(k => DIAS_SEMANA[k] === a.nome) - 
-        Object.keys(DIAS_SEMANA).findIndex(k => DIAS_SEMANA[k] === b.nome)
-      );
-  };
-
   const calcularEstatisticas = () => {
     const dadosFiltrados = processarDados();
     
@@ -109,6 +79,7 @@ const Dashboard = () => {
   };
 
   const estatisticas = calcularEstatisticas();
+
   const dadosStatus = [
     { nome: 'Pago', valor: estatisticas.totalPago },
     { nome: 'Pendente', valor: estatisticas.totalPendente },
@@ -118,167 +89,176 @@ const Dashboard = () => {
   const CORES = ['#0088FE', '#00C49F', '#FFBB28'];
 
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-4 py-4">
-      <div className="mb-4">
-        <h1 className="text-xl font-semibold text-gray-800">Dashboard de Pagamentos</h1>
-        <p className="text-sm text-gray-600">Acompanhamento de pagamentos e processamentos</p>
-      </div>
+    <Container maxWidth="xl">
+      <Box sx={{ py: 4 }}>
+        <Typography variant="h4" sx={{ mb: 4 }}>
+          Dashboard de Pagamentos
+        </Typography>
 
-      <div className="flex flex-col lg:flex-row gap-4">
-        {/* Filtros */}
-        <div className="w-full lg:w-64 flex-shrink-0">
-          <div className="bg-white rounded-lg shadow p-4">
-            <h2 className="text-lg font-medium mb-4">Filtros</h2>
-            <div className="space-y-3">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Período</label>
-                <select
-                  value={periodoTempo}
-                  onChange={(e) => setPeriodoTempo(e.target.value)}
-                  className="w-full rounded-md border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="diario">Hoje</option>
-                  <option value="7dias">Últimos 7 dias</option>
-                  <option value="30dias">Últimos 30 dias</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Pagamento</label>
-                <select
-                  value={tipoPagamento}
-                  onChange={(e) => setTipoPagamento(e.target.value)}
-                  className="w-full rounded-md border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                >
-                  <option value="todos">Todos</option>
-                  <option value="pix">PIX</option>
-                  <option value="credit">Cartão de Crédito</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Grid container spacing={3}>
+          {/* Filtros */}
+          <Grid item xs={12} md={3}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6" sx={{ mb: 2 }}>
+                  Filtros
+                </Typography>
+                
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <TextField
+                    label="Data Inicial"
+                    type="date"
+                    value={filtroData.de}
+                    onChange={(e) => setFiltroData(prev => ({ ...prev, de: e.target.value }))}
+                    InputLabelProps={{ shrink: true }}
+                    fullWidth
+                  />
 
-        {/* Conteúdo Principal */}
-        <div className="flex-1">
-          {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <div className="bg-white rounded-lg shadow p-4">
-              <p className="text-sm text-gray-600">Valor Total (Pago)</p>
-              <p className="text-xl font-semibold mt-1">R$ {estatisticas.valorTotal.toFixed(2)}</p>
-            </div>
-            <div className="bg-white rounded-lg shadow p-4">
-              <p className="text-sm text-gray-600">Total de Pedidos</p>
-              <p className="text-xl font-semibold mt-1">{dados.length}</p>
-            </div>
-            <div className="bg-white rounded-lg shadow p-4">
-              <p className="text-sm text-gray-600">Pedidos Processados</p>
-              <p className="text-xl font-semibold mt-1">{estatisticas.totalProcessado}</p>
-            </div>
-          </div>
+                  <TextField
+                    label="Data Final"
+                    type="date"
+                    value={filtroData.ate}
+                    onChange={(e) => setFiltroData(prev => ({ ...prev, ate: e.target.value }))}
+                    InputLabelProps={{ shrink: true }}
+                    fullWidth
+                  />
 
-          {/* Gráficos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="bg-white rounded-lg shadow p-4">
-              <h3 className="text-lg font-medium mb-4">Distribuição de Status</h3>
-              <div className="h-64">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={dadosStatus}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      outerRadius={80}
-                      fill="#8884d8"
-                      dataKey="valor"
-                      nameKey="nome"
+                  <FormControl fullWidth>
+                    <InputLabel>Tipo de Pagamento</InputLabel>
+                    <Select
+                      value={tipoPagamento}
+                      onChange={(e) => setTipoPagamento(e.target.value)}
+                      label="Tipo de Pagamento"
                     >
-                      {dadosStatus.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={CORES[index % CORES.length]} />
-                      ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+                      <MenuItem value="todos">Todos</MenuItem>
+                      <MenuItem value="pix">PIX</MenuItem>
+                      <MenuItem value="credit">Cartão de Crédito</MenuItem>
+                    </Select>
+                  </FormControl>
 
-            <div className="bg-white rounded-lg shadow p-4">
-              <h3 className="text-lg font-medium mb-4">Métodos de Pagamento</h3>
-              <div className="h-64">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={[
-                    { nome: 'PIX', valor: dados.filter(item => item.paymentType === 'pix').length },
-                    { nome: 'Cartão de Crédito', valor: dados.filter(item => item.paymentType === 'credit').length }
-                  ]}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="nome" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="valor" fill="#8884d8" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-          </div>
+                  <FormControl fullWidth>
+                    <InputLabel>Período</InputLabel>
+                    <Select
+                      value={periodoTempo}
+                      onChange={(e) => setPeriodoTempo(e.target.value)}
+                      label="Período"
+                    >
+                      <MenuItem value="diario">Diário</MenuItem>
+                      <MenuItem value="semanal">Semanal</MenuItem>
+                      <MenuItem value="mensal">Mensal</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+              </CardContent>
+            </Card>
+          </Grid>
 
-          {/* Análise DMM */}
-          <div className="bg-white rounded-lg shadow p-4">
-            <h3 className="text-lg font-medium mb-4">Análise DMM - Pedidos por Dia da Semana</h3>
-            <div className="h-64 mb-4">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={analisarPedidosPorDiaSemana()}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="nome" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="total" name="Total de Pedidos" fill="#0088FE" />
-                  <Bar dataKey="pendentes" name="Pedidos Pendentes" fill="#FF8042" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+          {/* Cards de Resumo */}
+          <Grid item xs={12} md={9}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={4}>
+                <Card>
+                  <CardContent>
+                    <Typography color="textSecondary" gutterBottom>
+                      Valor Total (Pago)
+                    </Typography>
+                    <Typography variant="h5">
+                      R$ {estatisticas.valorTotal.toFixed(2)}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
 
-            {/* Tabela DMM */}
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Dia da Semana
-                    </th>
-                    <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Total
-                    </th>
-                    <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Pendentes
-                    </th>
-                    <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Taxa de Pendência
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {analisarPedidosPorDiaSemana().map((dia, index) => (
-                    <tr key={dia.nome} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="px-4 py-2 text-sm text-gray-900">{dia.nome}</td>
-                      <td className="px-4 py-2 text-sm text-right text-gray-900">{dia.total}</td>
-                      <td className="px-4 py-2 text-sm text-right text-gray-900">{dia.pendentes}</td>
-                      <td className="px-4 py-2 text-sm text-right text-gray-900">{dia.taxaPendencia}%</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              <Grid item xs={12} md={4}>
+                <Card>
+                  <CardContent>
+                    <Typography color="textSecondary" gutterBottom>
+                      Total de Pedidos
+                    </Typography>
+                    <Typography variant="h5">
+                      {dados.length}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <Card>
+                  <CardContent>
+                    <Typography color="textSecondary" gutterBottom>
+                      Pedidos Processados
+                    </Typography>
+                    <Typography variant="h5">
+                      {estatisticas.totalProcessado}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+
+            {/* Gráficos */}
+            <Grid container spacing={3} sx={{ mt: 1 }}>
+              <Grid item xs={12} md={6}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      Distribuição de Status
+                    </Typography>
+                    <Box sx={{ height: 300 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={dadosStatus}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={80}
+                            fill="#8884d8"
+                            dataKey="valor"
+                            nameKey="nome"
+                          >
+                            {dadosStatus.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={CORES[index % CORES.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+
+              <Grid item xs={12} md={6}>
+                <Card>
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      Métodos de Pagamento
+                    </Typography>
+                    <Box sx={{ height: 300 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={[
+                          { nome: 'PIX', valor: dados.filter(item => item.paymentType === 'pix').length },
+                          { nome: 'Cartão de Crédito', valor: dados.filter(item => item.paymentType === 'credit').length }
+                        ]}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="nome" />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend />
+                          <Bar dataKey="valor" fill="#8884d8" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
 };
 
