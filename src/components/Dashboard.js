@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { 
   BarChart, Bar, 
   PieChart, Pie, 
-  LineChart, Line,
   XAxis, YAxis, 
   CartesianGrid, 
   Tooltip, 
@@ -11,16 +10,6 @@ import {
   Cell
 } from 'recharts';
 import { Calendar } from 'lucide-react';
-
-const DIAS_SEMANA = {
-  0: 'Domingo',
-  1: 'Segunda',
-  2: 'Terça',
-  3: 'Quarta',
-  4: 'Quinta',
-  5: 'Sexta',
-  6: 'Sábado'
-};
 
 const Dashboard = () => {
   const [dados, setDados] = useState([]);
@@ -85,39 +74,6 @@ const Dashboard = () => {
     }
 
     return dadosFiltrados;
-  };
-
-  const analisarPedidosPorDiaSemana = () => {
-    const pedidosPorDia = dados.reduce((acc, item) => {
-      const data = new Date(item.dataCriacao);
-      const diaSemana = data.getDay();
-      
-      if (!acc[diaSemana]) {
-        acc[diaSemana] = {
-          total: 0,
-          pendentes: 0,
-          nome: DIAS_SEMANA[diaSemana]
-        };
-      }
-      
-      acc[diaSemana].total += 1;
-      if (item.status === 'pending') {
-        acc[diaSemana].pendentes += 1;
-      }
-      
-      return acc;
-    }, {});
-
-    // Converter para array e ordenar por dia da semana
-    return Object.entries(pedidosPorDia)
-      .map(([dia, dados]) => ({
-        nome: dados.nome,
-        total: dados.total,
-        pendentes: dados.pendentes,
-        taxaPendencia: (dados.pendentes / dados.total * 100).toFixed(1)
-      }))
-      .sort((a, b) => Object.keys(DIAS_SEMANA).findIndex(k => DIAS_SEMANA[k] === a.nome) - 
-                      Object.keys(DIAS_SEMANA).findIndex(k => DIAS_SEMANA[k] === b.nome));
   };
 
   const calcularEstatisticas = () => {
@@ -297,65 +253,6 @@ const Dashboard = () => {
                   <Bar dataKey="valor" fill="#6366F1" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
-            </div>
-          </div>
-        </div>
-
-        {/* Análise DMM - Pedidos por Dia da Semana */}
-        <div className="mt-6">
-          <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">Análise DMM - Pedidos por Dia da Semana</h3>
-            <div className="h-96">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={analisarPedidosPorDiaSemana()}
-                  margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="nome" />
-                  <YAxis />
-                  <Tooltip content={({ active, payload, label }) => {
-                    if (active && payload && payload.length) {
-                      return (
-                        <div className="bg-white p-3 border rounded shadow-lg">
-                          <p className="font-semibold">{label}</p>
-                          <p className="text-indigo-600">Total: {payload[0].value}</p>
-                          <p className="text-red-600">Pendentes: {payload[1].value}</p>
-                          <p className="text-gray-600">Taxa de Pendência: {payload[0].payload.taxaPendencia}%</p>
-                        </div>
-                      );
-                    }
-                    return null;
-                  }} />
-                  <Legend />
-                  <Bar dataKey="total" name="Total de Pedidos" fill="#6366F1" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="pendentes" name="Pedidos Pendentes" fill="#EF4444" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            
-            {/* Tabela de Métricas */}
-            <div className="mt-6 overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dia da Semana</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total de Pedidos</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Pedidos Pendentes</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Taxa de Pendência</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {analisarPedidosPorDiaSemana().map((dia, index) => (
-                    <tr key={dia.nome} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{dia.nome}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{dia.total}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{dia.pendentes}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{dia.taxaPendencia}%</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
