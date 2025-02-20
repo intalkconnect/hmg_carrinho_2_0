@@ -21,7 +21,7 @@ const DIAS_SEMANA = {
   6: 'Sábado'
 };
 
-const DashboardPagamentos = () => {
+const Dashboard = () => {
   const [dados, setDados] = useState([]);
   const [filtroData, setFiltroData] = useState({ de: '', ate: '' });
   const [tipoPagamento, setTipoPagamento] = useState('todos');
@@ -365,4 +365,4 @@ const DashboardPagamentos = () => {
   );
 };
 
-export default DashboardPagamentos;
+export default Dashboard;
