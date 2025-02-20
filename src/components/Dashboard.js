@@ -313,8 +313,7 @@ const Dashboard = () => {
                 >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="nome" />
-                  <YAxis yAxisId="left" orientation="left" stroke="#6366F1" />
-                  <YAxis yAxisId="right" orientation="right" stroke="#EF4444" />
+                  <YAxis />
                   <Tooltip content={({ active, payload, label }) => {
                     if (active && payload && payload.length) {
                       return (
@@ -322,16 +321,15 @@ const Dashboard = () => {
                           <p className="font-semibold">{label}</p>
                           <p className="text-indigo-600">Total: {payload[0].value}</p>
                           <p className="text-red-600">Pendentes: {payload[1].value}</p>
-                          <p className="text-gray-600">Taxa de Pendência: {payload[2].value}%</p>
+                          <p className="text-gray-600">Taxa de Pendência: {payload[0].payload.taxaPendencia}%</p>
                         </div>
                       );
                     }
                     return null;
                   }} />
                   <Legend />
-                  <Bar yAxisId="left" dataKey="total" name="Total de Pedidos" fill="#6366F1" radius={[4, 4, 0, 0]} />
-                  <Bar yAxisId="left" dataKey="pendentes" name="Pedidos Pendentes" fill="#EF4444" radius={[4, 4, 0, 0]} />
-                  <Line yAxisId="right" type="monotone" dataKey="taxaPendencia" name="Taxa de Pendência (%)" stroke="#10B981" strokeWidth={2} dot={{ r: 4 }} />
+                  <Bar dataKey="total" name="Total de Pedidos" fill="#6366F1" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="pendentes" name="Pedidos Pendentes" fill="#EF4444" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
