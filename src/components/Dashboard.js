@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
   Cell
 } from 'recharts';
-import { Calendar } from 'lucide-react';
 
 const DIAS_SEMANA = {
   0: 'Domingo',
@@ -110,7 +109,6 @@ const Dashboard = () => {
   };
 
   const estatisticas = calcularEstatisticas();
-
   const dadosStatus = [
     { nome: 'Pago', valor: estatisticas.totalPago },
     { nome: 'Pendente', valor: estatisticas.totalPendente },
@@ -120,70 +118,40 @@ const Dashboard = () => {
   const CORES = ['#0088FE', '#00C49F', '#FFBB28'];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard de Pagamentos</h1>
-        <p className="mt-1 text-sm text-gray-600">Acompanhamento de pagamentos e processamentos</p>
+    <div className="w-full max-w-[1600px] mx-auto px-4 py-4">
+      <div className="mb-4">
+        <h1 className="text-xl font-semibold text-gray-800">Dashboard de Pagamentos</h1>
+        <p className="text-sm text-gray-600">Acompanhamento de pagamentos e processamentos</p>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
+      <div className="flex flex-col lg:flex-row gap-4">
         {/* Filtros */}
-        <div className="col-span-12 lg:col-span-3">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-semibold mb-4">Filtros</h2>
-            
-            <div className="space-y-4">
+        <div className="w-full lg:w-64 flex-shrink-0">
+          <div className="bg-white rounded-lg shadow p-4">
+            <h2 className="text-lg font-medium mb-4">Filtros</h2>
+            <div className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Data Inicial
-                </label>
-                <input
-                  type="date"
-                  value={filtroData.de}
-                  onChange={(e) => setFiltroData(prev => ({ ...prev, de: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Data Final
-                </label>
-                <input
-                  type="date"
-                  value={filtroData.ate}
-                  onChange={(e) => setFiltroData(prev => ({ ...prev, ate: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Tipo de Pagamento
-                </label>
-                <select
-                  value={tipoPagamento}
-                  onChange={(e) => setTipoPagamento(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="todos">Todos</option>
-                  <option value="pix">PIX</option>
-                  <option value="credit">Cartão de Crédito</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Período
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Período</label>
                 <select
                   value={periodoTempo}
                   onChange={(e) => setPeriodoTempo(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="diario">Hoje</option>
                   <option value="7dias">Últimos 7 dias</option>
                   <option value="30dias">Últimos 30 dias</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Pagamento</label>
+                <select
+                  value={tipoPagamento}
+                  onChange={(e) => setTipoPagamento(e.target.value)}
+                  className="w-full rounded-md border border-gray-300 p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="todos">Todos</option>
+                  <option value="pix">PIX</option>
+                  <option value="credit">Cartão de Crédito</option>
                 </select>
               </div>
             </div>
@@ -191,58 +159,27 @@ const Dashboard = () => {
         </div>
 
         {/* Conteúdo Principal */}
-        <div className="col-span-12 lg:col-span-9">
+        <div className="flex-1">
           {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Valor Total (Pago)</p>
-                  <p className="mt-2 text-2xl font-semibold">
-                    R$ {estatisticas.valorTotal.toFixed(2)}
-                  </p>
-                </div>
-                <div className="p-3 bg-green-100 rounded-full">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div className="bg-white rounded-lg shadow p-4">
+              <p className="text-sm text-gray-600">Valor Total (Pago)</p>
+              <p className="text-xl font-semibold mt-1">R$ {estatisticas.valorTotal.toFixed(2)}</p>
             </div>
-
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Total de Pedidos</p>
-                  <p className="mt-2 text-2xl font-semibold">{dados.length}</p>
-                </div>
-                <div className="p-3 bg-blue-100 rounded-full">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                  </svg>
-                </div>
-              </div>
+            <div className="bg-white rounded-lg shadow p-4">
+              <p className="text-sm text-gray-600">Total de Pedidos</p>
+              <p className="text-xl font-semibold mt-1">{dados.length}</p>
             </div>
-
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600">Pedidos Processados</p>
-                  <p className="mt-2 text-2xl font-semibold">{estatisticas.totalProcessado}</p>
-                </div>
-                <div className="p-3 bg-purple-100 rounded-full">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-              </div>
+            <div className="bg-white rounded-lg shadow p-4">
+              <p className="text-sm text-gray-600">Pedidos Processados</p>
+              <p className="text-xl font-semibold mt-1">{estatisticas.totalProcessado}</p>
             </div>
           </div>
 
           {/* Gráficos */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Distribuição de Status</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="bg-white rounded-lg shadow p-4">
+              <h3 className="text-lg font-medium mb-4">Distribuição de Status</h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -267,8 +204,8 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Métodos de Pagamento</h3>
+            <div className="bg-white rounded-lg shadow p-4">
+              <h3 className="text-lg font-medium mb-4">Métodos de Pagamento</h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={[
@@ -288,9 +225,9 @@ const Dashboard = () => {
           </div>
 
           {/* Análise DMM */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-lg font-semibold mb-4">Análise DMM - Pedidos por Dia da Semana</h3>
-            <div className="h-80">
+          <div className="bg-white rounded-lg shadow p-4">
+            <h3 className="text-lg font-medium mb-4">Análise DMM - Pedidos por Dia da Semana</h3>
+            <div className="h-64 mb-4">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={analisarPedidosPorDiaSemana()}
@@ -299,21 +236,7 @@ const Dashboard = () => {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="nome" />
                   <YAxis />
-                  <Tooltip 
-                    content={({ active, payload, label }) => {
-                      if (active && payload && payload.length) {
-                        return (
-                          <div className="bg-white p-3 border rounded shadow-lg">
-                            <p className="font-semibold">{label}</p>
-                            <p className="text-blue-600">Total: {payload[0].value}</p>
-                            <p className="text-red-600">Pendentes: {payload[1].value}</p>
-                            <p className="text-gray-600">Taxa de Pendência: {payload[1].payload.taxaPendencia}%</p>
-                          </div>
-                        );
-                      }
-                      return null;
-                    }}
-                  />
+                  <Tooltip />
                   <Legend />
                   <Bar dataKey="total" name="Total de Pedidos" fill="#0088FE" />
                   <Bar dataKey="pendentes" name="Pedidos Pendentes" fill="#FF8042" />
@@ -321,40 +244,32 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            {/* Tabela de Análise */}
-            <div className="mt-6 overflow-x-auto">
+            {/* Tabela DMM */}
+            <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
+                <thead>
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Dia da Semana
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Total
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Pendentes
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Taxa de Pendência
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="divide-y divide-gray-200">
                   {analisarPedidosPorDiaSemana().map((dia, index) => (
                     <tr key={dia.nome} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {dia.nome}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500">
-                        {dia.total}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500">
-                        {dia.pendentes}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-500">
-                        {dia.taxaPendencia}%
-                      </td>
+                      <td className="px-4 py-2 text-sm text-gray-900">{dia.nome}</td>
+                      <td className="px-4 py-2 text-sm text-right text-gray-900">{dia.total}</td>
+                      <td className="px-4 py-2 text-sm text-right text-gray-900">{dia.pendentes}</td>
+                      <td className="px-4 py-2 text-sm text-right text-gray-900">{dia.taxaPendencia}%</td>
                     </tr>
                   ))}
                 </tbody>
